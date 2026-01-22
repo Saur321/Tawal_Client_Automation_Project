@@ -1,0 +1,5 @@
+pages\iTower_Tawal\TroubleTicketingPage.class
+pages\iTower_Tawal\LoginPage.class
+pages\iTower_Tawal\TroubleTicketingPage$ValidationRecordWithStatusAndSiteId.class
+allureListeners\AllureListener.class
+pages\AllClientsBasePages\BasePage.class

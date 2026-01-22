@@ -1,0 +1,7 @@
+testCases\BaseTest\BaseTest_Tawal.class
+utilities\MonitoringMail$SMTPAuthenticator.class
+utilities\MonitoringMail.class
+testCases\clients\Tawal\TheTroubleTicketing.class
+utilities\TestConfig.class
+utilities\ExcelReader.class
+utilities\DataUtilities_Tawal.class

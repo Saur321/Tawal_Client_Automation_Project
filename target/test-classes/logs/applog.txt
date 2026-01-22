@@ -1,0 +1,49 @@
+INFO    2026-01-22 15:59:16,243 [main] BaseTest.class  - Test Execution Starts !!
+INFO    2026-01-22 15:59:16,248 [main] BaseTest.class  - Config properties file loaded
+INFO    2026-01-22 15:59:16,255 [main] BaseTest.class  - OR properties file loaded
+INFO    2026-01-22 15:59:20,836 [main] BaseTest.class  - Chrome browser launched
+INFO    2026-01-22 15:59:21,152 [main] BaseTest.class  - Navigate to : http://192.168.0.35:5055/default.aspx 
+INFO    2026-01-22 15:59:21,355 [main] BaseTest.class  - Typing in username_ID element and entered the value as superadmin
+INFO    2026-01-22 15:59:21,412 [main] BaseTest.class  - Typing in password_ID element and entered the value as m
+INFO    2026-01-22 15:59:24,287 [main] BaseTest.class  - Clicking on signInButton_XPATH
+INFO    2026-01-22 15:59:28,326 [main] BaseTest.class  - Clicking on tickingManagementModule_XPATH
+INFO    2026-01-22 15:59:29,427 [main] BaseTest.class  - Clicking on troubleTickting_XPATH
+INFO    2026-01-22 15:59:29,487 [main] BaseTest.class  - Element waitForInvisible_XPATH is invisible on webpage
+INFO    2026-01-22 15:59:29,570 [main] BaseTest.class  - Element available as text : Trouble Ticketing
+INFO    2026-01-22 15:59:30,113 [main] BaseTest.class  - Clicking on addTicketButton_XPATH
+INFO    2026-01-22 15:59:35,023 [main] BaseTest.class  - Frame iframe_ID is handled on webpage
+INFO    2026-01-22 15:59:37,909 [main] BaseTest.class  - Typing in siteID_XPATH element and entered the value as 1000905
+INFO    2026-01-22 15:59:38,377 [main] BaseTest.class  - Clicking on click_On_Suggestion_XPATH
+INFO    2026-01-22 15:59:38,444 [main] BaseTest.class  - Clicking on selectTicketType_XPATH
+INFO    2026-01-22 15:59:38,482 [main] BaseTest.class  -  List of Element multiselect_ddlTicketType_XPATH is presence on webpage
+INFO    2026-01-22 15:59:39,093 [main] BaseTest.class  - Typing in multiselect_ddlTicketType_XPATH element and entered the value as Incident
+INFO    2026-01-22 15:59:39,423 [main] BaseTest.class  - Clicking on selectSeverity_XPATH
+INFO    2026-01-22 15:59:39,475 [main] BaseTest.class  -  List of Element selectFromSeverityDropdown_XPATH is presence on webpage
+INFO    2026-01-22 15:59:39,889 [main] BaseTest.class  - Typing in selectFromSeverityDropdown_XPATH element and entered the value as Critical
+INFO    2026-01-22 15:59:40,231 [main] BaseTest.class  - Clicking on selectAssignedTo_XPATH
+INFO    2026-01-22 15:59:40,379 [main] BaseTest.class  - Typing in selectAssigned_XPATH element and entered the value as 3rd Escalation
+INFO    2026-01-22 15:59:41,076 [main] BaseTest.class  - Clicking on selectAlarmDescription_XPATH
+INFO    2026-01-22 15:59:41,282 [main] BaseTest.class  - Typing in selectAlarm_XPATH element and entered the value as Acu Fault (Itc)
+INFO    2026-01-22 15:59:41,817 [main] BaseTest.class  - Clicking on service_Impact_XPATH
+INFO    2026-01-22 15:59:41,993 [main] BaseTest.class  - Typing in enter_Value_service_Impact_XPATH element and entered the value as Outage
+INFO    2026-01-22 15:59:42,833 [main] BaseTest.class  - Clicking on service_Impact_Start_XPATH
+INFO    2026-01-22 15:59:43,436 [main] BaseTest.class  - Typing in enter_Value_starttime_XPATH element and entered the value as 15:59
+INFO    2026-01-22 15:59:46,615 [main] BaseTest.class  - Clicking on tickingManagementModule_XPATH
+INFO    2026-01-22 15:59:47,699 [main] BaseTest.class  - Clicking on troubleTickting_XPATH
+INFO    2026-01-22 15:59:47,743 [main] BaseTest.class  - Element waitForInvisible_XPATH is invisible on webpage
+INFO    2026-01-22 15:59:48,892 [main] BaseTest.class  - Clicking on click_On_Alarm_Description_XPATH
+INFO    2026-01-22 15:59:49,257 [main] BaseTest.class  - Typing in alarmDescriptionn_XPATH element and entered the value as Acu Fault (Itc)
+INFO    2026-01-22 15:59:50,751 [main] BaseTest.class  - Clicking on filterReport_XPATH
+INFO    2026-01-22 15:59:55,806 [main] BaseTest.class  - Clicking on open_Ticket_ID_XPATH
+INFO    2026-01-22 15:59:56,099 [main] BaseTest.class  - Frame iframe_ID is handled on webpage
+INFO    2026-01-22 16:00:06,184 [main] BaseTest.class  - Element waitForInvisible_XPATH is invisible on webpage
+INFO    2026-01-22 16:00:06,525 [main] BaseTest.class  - Clicking on reassign_User_XPATH
+INFO    2026-01-22 16:00:06,684 [main] BaseTest.class  - Typing in selectAssigned_XPATH element and entered the value as 3rd Escalation
+INFO    2026-01-22 16:00:07,274 [main] BaseTest.class  - Typing in ETA_Value_XPATH element and entered the value as 10
+INFO    2026-01-22 16:00:07,428 [main] BaseTest.class  - Typing in ETR_Value_XPATH element and entered the value as 30
+INFO    2026-01-22 16:00:07,810 [main] BaseTest.class  - Clicking on update_Resolved_Ticket_CSS
+INFO    2026-01-22 16:00:07,874 [main] BaseTest.class  - Element available as text : Please select Ticket Type.
+INFO    2026-01-22 16:00:09,446 [main] BaseTest.class  - Clicking on tickingManagementModule_XPATH
+INFO    2026-01-22 16:00:23,460 [main] BaseTest.class  - Clicking on troubleTickting_XPATH
+INFO    2026-01-22 16:00:23,494 [main] BaseTest.class  - Element waitForInvisible_XPATH is invisible on webpage
+INFO    2026-01-22 16:00:24,686 [main] BaseTest.class  - Clicking on ShowFilterOnTroubleTicketingPage_XPATH
