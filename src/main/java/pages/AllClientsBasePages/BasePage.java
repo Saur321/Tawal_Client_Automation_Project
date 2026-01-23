@@ -2210,4 +2210,37 @@ public class BasePage {
 			Thread.sleep(2000);
 
 		}
+		
+		public String fluentWaitForVisibilityOfElementLocated(String locatorKey, int maxTimeOut, int pollingTime) {
+			String text = null;
+		    try {
+		    	
+		        Wait<WebDriver> fluentWait = new FluentWait<>(driver)
+		            .withTimeout(Duration.ofMinutes(maxTimeOut))  // maximum time to wait
+		            .pollingEvery(Duration.ofSeconds(pollingTime)) // polling interval
+		            .ignoring(NoSuchElementException.class); // exceptions to ignore
+
+		        if (locatorKey.endsWith("_ID")) {
+		        	text=fluentWait.until(ExpectedConditions.visibilityOfElementLocated(By.id(OR.getProperty(locatorKey)))).getText();
+		        } else if (locatorKey.endsWith("_XPATH")) {
+		        	text= fluentWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.getProperty(locatorKey)))).getText();
+		        } else if (locatorKey.endsWith("_CSS")) {
+		        	text=fluentWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(OR.getProperty(locatorKey)))).getText();
+		        }
+		        
+		        log.info("Element " + locatorKey + " is invisible on webpage");
+		        Allure.step("Element " + locatorKey.replaceAll("_(ID|XPATH|CSS)$", "" + " is invisible on webpage"),
+		                Status.PASSED);
+
+		        return text;
+		        
+		    } catch (Throwable t) {
+		        log.info("Error while waiting for invisibility of element " + locatorKey);
+		        Allure.step("Error while waiting for invisibility of element " + locatorKey.replaceAll("_(ID|XPATH|CSS)$", ""),
+		                Status.FAILED);
+		        return text;
+		    }
+			
+		}
+		
 }

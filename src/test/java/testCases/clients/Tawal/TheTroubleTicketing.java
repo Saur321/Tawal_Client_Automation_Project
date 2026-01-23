@@ -269,5 +269,17 @@ public class TheTroubleTicketing extends BasePage {
 		troubleTicket.closedTicketbulkUpload();
 		troubleTicket.closedTicket_ReportFilterAndExport();
 	}
+	
+	@Description("All child ticket should be visible in separate tab under update TT form")
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 18, dependsOnMethods = {
+			"testLogin" })
+	public void addChildTicket(String numberOFMonth, String ticketStatus) throws InterruptedException, java.util.concurrent.TimeoutException{
+		base.refreshPage();
+		troubleTicket.landingOnTroubleTicketPageUsingJS();
+		handleCalenderOnTroubleTickett(numberOFMonth);
+		troubleTicket.serachTicketID(ticketStatus);
+		troubleTicket.enterChildTicketID();
+		troubleTicket.exportAddedChild();
+	}
 
 }

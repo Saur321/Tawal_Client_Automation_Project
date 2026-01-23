@@ -2992,4 +2992,54 @@ public class TroubleTicketingPage extends BasePage {
 		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
 
 	}
+	
+	public void serachTicketID(String ticketStatus) throws InterruptedException {
+    	click("ShowFilterOnTroubleTicketingPage_XPATH");	
+		click("ticketStatusID_XPATH");
+		handleClickByJS("click_On_None_XPATH");
+		clickUsingDynamicLocator("stauts_Value_XPATH", ticketStatus);
+		handleInputFieldByJS("TicKetIDInputField_XPATH", "TT00709276");
+		click("filterReport_XPATH");	
+		Thread.sleep(3000);
+    }
+
+    
+    public void enterChildTicketID() throws TimeoutException, InterruptedException {
+    	explicitWaitWithinvisibilityOfElementLocated("filterLoading_XPATH");
+    	ticketIdValue = getText("ticketIdOnPage_XPATH");
+    	click("open_Ticket_ID_XPATH");
+    	explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
+    	handleIframe("iframe_ID");
+    	enterTextIntoInputBox("enter_OriginalTicket_XPATH", "TT00709169");
+    	clearTextFromInputBox("enterValue_HubSiteId_XPATH");
+    	enterTextIntoInputBox("enterValue_HubSiteId_XPATH", "HSID1");
+    	enterTextIntoInputBox("remark_XPATH", "Remarks added");
+    	click("updateTicketBUtton_XPATH");
+		String confirmText=fluentWaitForVisibilityOfElementLocated("ErrorMessageOnTicketForm_XPATH",10,2);
+		System.out.println(confirmText);
+		Assert.assertEquals(confirmText,("Trouble ticket updated successfully (Ticket Id : TT00709276) ."));
+    	switchToDefaultContentFromIframe();
+		click("closeFrame_XPATH");
+    }		
+		public void exportAddedChild() throws TimeoutException, InterruptedException {
+    	click("ShowFilterOnTroubleTicketingPage_XPATH");
+    	clearTextFromInputBox("TicKetIDInputField_XPATH");
+    	enterTextIntoInputBox("TicKetIDInputField_XPATH", "TT00709169");
+    	click("filterReport_XPATH");
+    	Thread.sleep(3000);
+    	explicitWaitWithinvisibilityOfElementLocated("filterLoading_XPATH");
+    	click("open_Ticket_ID_XPATH");
+    	handleIframe("iframe_ID");
+    	click("click_ChildTicketTab_XPATH");
+    	explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
+    	deleteOldFilesFromLocation("TroubleTicketing_");
+    	click("export_csv_File_XPATH");
+    	renameDownloadedFile("TroubleTicketing_", "exportAllChildTicket");
+		verifyUsingAssertFileIsExistInLocation("exportAllChildTicket");
+		click("select_Checkbox_XPATH");
+		click("dissociateChild_XPATH");
+		acceptTheAlert();
+		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
+		Assert.assertEquals(getText("successMsg_XPATH"), "Record has been dissociated successfully..");
+    }
 }
