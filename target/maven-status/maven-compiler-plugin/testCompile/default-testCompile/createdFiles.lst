@@ -5,3 +5,4 @@ testCases\clients\Tawal\TheTroubleTicketing.class
 utilities\TestConfig.class
 utilities\ExcelReader.class
 utilities\DataUtilities_Tawal.class
+testCases\clients\Tawal\TheTroubleTicketAPI.class

@@ -1,0 +1,215 @@
+<html>
+<head>
+<title>TestNG:  Run Test script for Trouble Ticketing</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Run Test script for Trouble Ticketing</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>27/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Tue Feb 03 15:22:27 IST 2026</td>
+</tr>
+<tr><td>Total time:</td><td>900 seconds (900430 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.verifyDataInSLAReport()'><b>verifyDataInSLAReport</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: KSA2520, ACES</td>
+<td></td>
+<td>11</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.updateETAndETR()'><b>updateETAndETR</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: Acu Fault (Itc), 1000135, 10, 30, 3rd Escalation, reassigned, First</td>
+<td></td>
+<td>63</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.testFilterFunctionalitiesOnTroubleTicket()'><b>testFilterFunctionalitiesOnTroubleTicket</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing</td>
+<td></td>
+<td>32</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.verifyTicketIsClosed()'><b>verifyTicketIsClosed</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: Acu Fault (Itc), 1000135, AC Power Alarm, AC DB Fault, Issue, First</td>
+<td></td>
+<td>31</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.testLoginToTTclosureOrCreater()'><b>testLoginToTTclosureOrCreater</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: superadmin, m</td>
+<td></td>
+<td>12</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.verifyReferredRTTStoAssign()'><b>verifyReferredRTTStoAssign</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: ZRY336</td>
+<td></td>
+<td>52</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.verifyResolvedToAssignStatus()'><b>verifyResolvedToAssignStatus</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: Acu Fault (Itc), 1000136, Second</td>
+<td></td>
+<td>57</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.bulkUploadTroubleTicket()'><b>bulkUploadTroubleTicket</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: 1000191</td>
+<td></td>
+<td>18</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.verifySiteIdAutoFilled()'><b>verifySiteIdAutoFilled</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: ZWJ022</td>
+<td></td>
+<td>25</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.verifyAssignRTTSToInProgress()'><b>verifyAssignRTTSToInProgress</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: ZRY336</td>
+<td></td>
+<td>49</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.verifyTicketIsResolved()'><b>verifyTicketIsResolved</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: Acu Fault (Itc), 1000136, Access-Module/Cable, GE/FE-Module/cable Faulty, Test, Resolved, Second</td>
+<td></td>
+<td>99</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.verifyRefreshButton()'><b>verifyRefreshButton</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing</td>
+<td></td>
+<td>14</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.aVerifySetup()'><b>aVerifySetup</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: Tawal</td>
+<td></td>
+<td>2</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.testLogin()'><b>testLogin</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: superadmin, m</td>
+<td></td>
+<td>5</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.addTroubleTicket()'><b>addTroubleTicket</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: 1000136, Incident, Critical, 3rd Escalation, Acu Fault (Itc), Outage, Second</td>
+<td></td>
+<td>27</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.testLoginToAssignUser()'><b>testLoginToAssignUser</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: superadmin, m</td>
+<td></td>
+<td>5</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.addTroubleTicket()'><b>addTroubleTicket</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: 1000135, Incident, Critical, 3rd Escalation, Acu Fault (Itc), Outage, First</td>
+<td></td>
+<td>21</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.verifySaveFilter()'><b>verifySaveFilter</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing</td>
+<td></td>
+<td>16</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.sortingFunctionalitiesOnDataGridUI()'><b>sortingFunctionalitiesOnDataGridUI</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing</td>
+<td></td>
+<td>45</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.verifyTicketIsResolved()'><b>verifyTicketIsResolved</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: Acu Fault (Itc), 1000135, Access-Module/Cable, GE/FE-Module/cable Faulty, Test, Resolved, First</td>
+<td></td>
+<td>108</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.paginationFunctionalitiesOnDataGridUI()'><b>paginationFunctionalitiesOnDataGridUI</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing</td>
+<td></td>
+<td>22</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.verifyFullScreenMode()'><b>verifyFullScreenMode</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing</td>
+<td></td>
+<td>6</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.verifyWildSearch()'><b>verifyWildSearch</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing</td>
+<td></td>
+<td>52</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.RMSDataOnAlarmNameColumn()'><b>RMSDataOnAlarmNameColumn</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: TT00709198, Manual</td>
+<td></td>
+<td>32</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.distanceValueBasedOnUserLatAndUserLong()'><b>distanceValueBasedOnUserLatAndUserLong</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing</td>
+<td></td>
+<td>43</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.verifyRestoreTheRTTSticket()'><b>verifyRestoreTheRTTSticket</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: ZRY336, Access-Module/Cable, GE/FE-Module/cable Faulty, Test</td>
+<td></td>
+<td>36</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+<tr>
+<td title='testCases.clients.Tawal.TheTroubleTicketing.testLoginToReassignUser()'><b>testLoginToReassignUser</b><br>Test class: testCases.clients.Tawal.TheTroubleTicketing<br>Parameters: superadmin, m</td>
+<td></td>
+<td>4</td>
+<td>testCases.clients.Tawal.TheTroubleTicketing@5eb2172</td></tr>
+</table><p>
+</body>
+</html>

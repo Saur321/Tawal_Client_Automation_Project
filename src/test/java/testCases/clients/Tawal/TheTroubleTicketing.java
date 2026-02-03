@@ -1,3 +1,4 @@
+
 package testCases.clients.Tawal;
 
 import java.io.FileNotFoundException;
@@ -9,8 +10,10 @@ import org.testng.asserts.SoftAssert;
 
 import com.opencsv.exceptions.CsvException;
 
+import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import pages.AllClientsBasePages.BasePage;
+import pages.iTower_Tawal.BaseDataForAPI;
 import pages.iTower_Tawal.LoginPage;
 import pages.iTower_Tawal.TroubleTicketingPage;
 import utilities.DataUtilities_Tawal;
@@ -20,84 +23,131 @@ public class TheTroubleTicketing extends BasePage {
 	LoginPage login = new LoginPage();
 	SoftAssert sa = new SoftAssert();
 	TroubleTicketingPage troubleTicket = new TroubleTicketingPage();
+	BaseDataForAPI bsAPI = new BaseDataForAPI();
 
+	@Description("Verify setup functionalities")
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 1)
+
+	public void aVerifySetup(String clientName) throws InterruptedException,
+			java.util.concurrent.TimeoutException, FileNotFoundException, IOException, CsvException {
+		base.setUp(clientName);
+		
+
+	}
 	@Description("Verify Login Page functionalities")
 	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 1)
 
-	public void testLogin(String clientName, String username, String password) throws InterruptedException,
+	public void testLogin( String username, String password) throws InterruptedException,
 			java.util.concurrent.TimeoutException, FileNotFoundException, IOException, CsvException {
-		base.setUp(clientName);
+		login.doLogin(username, password);
+
+	}
+
+	@Description("Verify Site ID should get auto filled if user fill Opco Site ID")
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 2, dependsOnMethods = {
+			"testLogin" })
+	public void verifySiteIdAutoFilled(String opcoId) throws InterruptedException {
+		refreshPage();
+		troubleTicket.landingOnTroubleTicketPageUsingJS();
+		troubleTicket.verifySiteIdAutoFilledByOPCOSiteId(opcoId);
+	}
+
+	@Description("Verify Ticket should be added")
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 3, dependsOnMethods = {
+			"testLogin" })
+	public void addTroubleTicket(String siteId, String ticketType, String severity, String assignedTo,
+			String alarmDescription, String serviceImpact, String TicketValue)
+			throws InterruptedException, TimeoutException, java.util.concurrent.TimeoutException {
+		refreshPage();
+		troubleTicket.landingOnTroubleTicketPageUsingJS();
+		troubleTicket.addNewTroubleTicket(siteId, ticketType, severity, assignedTo, alarmDescription, serviceImpact,
+				TicketValue);
+
+	}
+
+	@Description("Verify test Login To Assign User")
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 4)
+
+	public void testLoginToAssignUser(String username, String password)
+			throws InterruptedException, java.util.concurrent.TimeoutException, FileNotFoundException, IOException {
+		refreshPage();
+		troubleTicket.performLogout();
 		login.doLogin(username, password);
 	}
 
-	
-
-	@Description("Verify Add New Trouble Ticket functionalities")
-	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 2, dependsOnMethods = {
-			"testLogin" })
-	public void addTroubleTicket(String siteId, String ticketType, String severity, String assignedTo,
-			String alarmDescription,String serviceImpact)
-			throws InterruptedException, TimeoutException, java.util.concurrent.TimeoutException {
-	refreshPage();
-		troubleTicket.landingOnTroubleTicketPageUsingJS();
-		sa.assertEquals(base.getText("troubleTickting_XPATH"), "Trouble Ticketing");
-		troubleTicket.addNewTroubleTicket(siteId, ticketType, severity, assignedTo, alarmDescription,serviceImpact);
-
-	}
-
-	
-
 	@Description("Verify Assigned user should able to update ETA/ETR")
-	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 3, dependsOnMethods = {
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 5, dependsOnMethods = {
 			"testLogin" })
 	public void updateETAndETR(String alarmDescription, String siteId, String ETAValue, String ETRValue,
-			String assignedTo, String remarks) throws InterruptedException {
+			String assignedTo, String remarks, String TicketValue) throws InterruptedException {
 		refreshPage();
 		troubleTicket.landingOnTroubleTicketPageUsingJS();
-		troubleTicket.updateETAAndETRByAssignUser(alarmDescription, siteId, ETAValue, ETRValue, assignedTo, remarks);
+		troubleTicket.updateETAAndETRByAssignUser(alarmDescription, siteId, ETAValue, ETRValue, assignedTo, remarks,
+				TicketValue);
 	}
 
-	
+	@Description("Verify test Login To Reassign User")
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 6)
+	public void testLoginToReassignUser(String username, String password)
+			throws InterruptedException, java.util.concurrent.TimeoutException, FileNotFoundException, IOException {
+		refreshPage();
+		troubleTicket.performLogout();
+		Allure.step("/* Reassigned user should able to take action on Ticket */");
+		login.doLogin(username, password);
+	}
 
-	@Description(" Verify ticket is resolved by Assign User and Check Assign User is able to add spare part")
-	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 4, dependsOnMethods = {
+	@Description(" Verify Assigned user should able to resolve the ticket")
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 7, dependsOnMethods = {
 			"testLogin" })
-	public void addSparePartWhileRT(String alarmDescription, String siteId, String rcaCategory, String rcaSubCategory,
-			String rcaReason, String remarks, String selectSparePartsCategory, String selectSpareParts,
-			String selectQuantities)
+	public void verifyTicketIsResolved(String alarmDescription, String siteId, String rcaCategory,
+			String rcaSubCategory, String rcaReason, String remarks, String TicketValue,String selectFaultArea,String faultAreaDetails,String resolutionMethod)
 			throws InterruptedException, TimeoutException, java.util.concurrent.TimeoutException {
 		refreshPage();
 		troubleTicket.landingOnTroubleTicketPageUsingJS();
-		troubleTicket.handleResolvedTicket(alarmDescription, siteId, rcaCategory, rcaSubCategory, rcaReason);
-		troubleTicket.addSparePartsInsideResolvedTicket(remarks, selectSparePartsCategory, selectSpareParts,
-				selectQuantities);
+		troubleTicket.handleResolvedTicket(alarmDescription, siteId, rcaCategory, rcaSubCategory, rcaReason, remarks,
+				TicketValue,selectFaultArea,faultAreaDetails,resolutionMethod);
 		troubleTicket.exportAuditLogFile();
 
 	}
 
-	
+	@Description("Verify test Login To TT closure Or Creater group")
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 8)
+	public void testLoginToTTclosureOrCreater(String username, String password)
+			throws InterruptedException, java.util.concurrent.TimeoutException, FileNotFoundException, IOException {
+		refreshPage();
+		troubleTicket.performLogout();
+		login.doLogin(username, password);
 
+	}
 
-	@Description("Verify ticket closure permissions for both Creator and TT Closure Group users, along with validation of generated child tickets")
-	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 5, dependsOnMethods = {
+	@Description("Verify TT closure group user should able to close the ticket")
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 9, dependsOnMethods = {
 			"testLogin" })
-	public void addChildTicketWhileClosingT(String alarmDescription, String siteId, String rcaCategory,
-			String rcaSubCategory, String rcaReason)
+	public void verifyTicketIsClosed(String alarmDescription, String siteId, String rcaCategory, String rcaSubCategory,
+			String rcaReason, String TicketValue)
 			throws InterruptedException, TimeoutException, FileNotFoundException, IOException {
 		base.refreshPage();
 		troubleTicket.landingOnTroubleTicketPageUsingJS();
-		troubleTicket.handleClosedTicket(alarmDescription, siteId, rcaCategory, rcaSubCategory, rcaReason);
+		troubleTicket.handleClosedTicket(alarmDescription, siteId, rcaCategory, rcaSubCategory, rcaReason, TicketValue);
 	}
 
-	
+	@Description("Verify TT reversal Group user can reassign the TT from Resolve to assign")
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 10, dependsOnMethods = {
+			"testLogin" })
+	public void verifyResolvedToAssignStatus(String alarmDescription, String siteId, String TicketValue)
+			throws InterruptedException, TimeoutException, FileNotFoundException, IOException {
+		base.refreshPage();
+		troubleTicket.landingOnTroubleTicketPageUsingJS();
+		troubleTicket.verifyTicketStatusFromResolvedToAssignByTTReversalGroup(alarmDescription, siteId, TicketValue);
+	}
 
-	
-	@Description("Verify Sorting Functionalities On Data Grid UI")
-	@Test(priority = 6, dependsOnMethods = { "testLogin" })
+	@Description("Verify Shorting (short on columns) should be working fine")
+	@Test(priority = 11, dependsOnMethods = { "testLogin" })
 	public void sortingFunctionalitiesOnDataGridUI()
 			throws InterruptedException, java.util.concurrent.TimeoutException {
 		refreshPage();
 		troubleTicket.landingOnTroubleTicketPageUsingJS();
+		Thread.sleep(5000);
 		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
 		handleCalenderOnTroubleTicket(1);
 		sa.assertEquals(getText("ticketIdText_XPATH"), "ticket Id");
@@ -113,12 +163,11 @@ public class TheTroubleTicketing extends BasePage {
 		troubleTicket.verifyAscendingOrder();
 		click("siteIdText_XPATH");
 		scrollForAGGrid();
-		
 
 	}
 
-	@Description("Verify Pagination Functionalities On Data Grid UI")
-	@Test(priority = 7, dependsOnMethods = { "testLogin" })
+	@Description("Verify Paging (number of TT in a page) should be working fine")
+	@Test(priority = 12, dependsOnMethods = { "testLogin" })
 	public void paginationFunctionalitiesOnDataGridUI() throws InterruptedException, FileNotFoundException, IOException,
 			TimeoutException, java.util.concurrent.TimeoutException {
 		refreshPage();
@@ -127,14 +176,8 @@ public class TheTroubleTicketing extends BasePage {
 
 	}
 
-	
-
-	
-
-	
-
-	@Description("Verify All filters work fine in TT report")
-	@Test(priority = 8, dependsOnMethods = { "testLogin" })
+	@Description("Verify All filters should work fine in TT report")
+	@Test(priority = 13, dependsOnMethods = { "testLogin" })
 	public void testFilterFunctionalitiesOnTroubleTicket()
 			throws InterruptedException, java.util.concurrent.TimeoutException {
 		refreshPage();
@@ -142,13 +185,12 @@ public class TheTroubleTicketing extends BasePage {
 		troubleTicket.handleSelect_SPM_Region();
 		troubleTicket.handleSelect_Sub_Region();
 		troubleTicket.handleSelectMiniCluster();
-		
 		troubleTicket.handleSelectTicketType();
 		troubleTicket.handleSelectEquipment();
 		troubleTicket.handleSelectSeverity();
-		troubleTicket.handleSelectTicketStatusSelected();
+		troubleTicket.handleSelectTicketStatusSelected("Assign");
 		troubleTicket.handleSelectGroupOfUsers();
-     	troubleTicket.handleSelectPowerVendor();
+		troubleTicket.handleSelectPowerVendor();
 		troubleTicket.handleSelectTicketMode();
 		troubleTicket.handleSelectOperator();
 		troubleTicket.handleSelectServiceType();
@@ -158,26 +200,24 @@ public class TheTroubleTicketing extends BasePage {
 
 	}
 
-	
-
-	@Description("Save filter option should be working properly")
-	@Test(priority = 9, dependsOnMethods = { "testLogin" })
+	@Description("Verify Save filter option should be working properly")
+	@Test(priority = 14, dependsOnMethods = { "testLogin" })
 	public void verifySaveFilter() throws InterruptedException {
 		refreshPage();
 		troubleTicket.landingOnTroubleTicketPageUsingJS();
 		troubleTicket.saveFilterFunctionality();
 	}
 
-	@Description("Refresh (button) option should work fine")
-	@Test(priority = 10, dependsOnMethods = { "testLogin" })
+	@Description("Verify Refresh (button) option should work fine")
+	@Test(priority = 15, dependsOnMethods = { "testLogin" })
 	public void verifyRefreshButton() throws InterruptedException {
 		refreshPage();
 		troubleTicket.landingOnTroubleTicketPageUsingJS();
 		troubleTicket.applyRefreshButton();
 	}
 
-	@Description("Report should be work in Full screen mode as well")
-	@Test(priority = 11, dependsOnMethods = { "testLogin" })
+	@Description("Verify Report should be work in Full screen mode as well")
+	@Test(priority = 16, dependsOnMethods = { "testLogin" })
 	public void verifyFullScreenMode() throws InterruptedException {
 		refreshPage();
 		troubleTicket.landingOnTroubleTicketPageUsingJS();
@@ -185,18 +225,19 @@ public class TheTroubleTicketing extends BasePage {
 
 	}
 
-	@Description("RMS Data should be there in alarm desc hover")
-	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 12, dependsOnMethods = {
+	@Description("Verify RMS Data should be there in alarm desc hover")
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 17, dependsOnMethods = {
 			"testLogin" })
 	public void RMSDataOnAlarmNameColumn(String ticketID, String ticketMode)
 			throws InterruptedException, java.util.concurrent.TimeoutException {
 		refreshPage();
 		troubleTicket.landingOnTroubleTicketPageUsingJS();
+		Thread.sleep(4000);
 		troubleTicket.RMSDataForTicketIdShouldReflectOnAlarmDescHover(ticketID, ticketMode);
 	}
 
 	@Description("Verify Vendor/Operator SLA should be coming in report if defined in system")
-	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 13, dependsOnMethods = {
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 18, dependsOnMethods = {
 			"testLogin" })
 
 	public void verifyDataInSLAReport(String operator, String Vendor)
@@ -206,68 +247,100 @@ public class TheTroubleTicketing extends BasePage {
 		troubleTicket.verifySLAReport(operator, Vendor);
 		troubleTicket.handleFromDateCalenderForFilterSLA(2);
 		handleClickByJS("filterReport_SLA_XPATH");
+		Thread.sleep(2000);
 
 	}
-	@Description("Report should be work in Full screen mode as well")
-	@Test(priority = 14, dependsOnMethods = { "testLogin" })
-	public void verifyWildSearch() throws InterruptedException {
-		refreshPage();
-		troubleTicket.landingOnTroubleTicketPageUsingJS();
-		troubleTicket.wildSearchBySiteId("1000006");
-		troubleTicket.wildSearchByTicketId("TT00709125");
-	}
-	@Description("Report should be work in Full screen mode as well")
-	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 15, dependsOnMethods = {
+
+	@Description("Verify Wild search should work in Ticket ID and site id filters")
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 19, dependsOnMethods = {
 	"testLogin" })
-	public void verifySiteIdAutoFilled(String opcoId) throws InterruptedException {
+	public void verifyWildSearch(String siteId,String TicketId) throws InterruptedException {
 		refreshPage();
 		troubleTicket.landingOnTroubleTicketPageUsingJS();
-		troubleTicket.verifySiteIdAutoFilledByOPCOSiteId(opcoId);
+		troubleTicket.wildSearchBySiteId(siteId);
+		troubleTicket.wildSearchByTicketId(TicketId);
 	}
-	@Description("verify UI records with downloaded CSV file data")
-	@Test(priority = 16, dependsOnMethods = { "testLogin" })
-	public void verifyUIRecordsWithDownloadedCSVFileData() throws InterruptedException, FileNotFoundException,
-			IOException, TimeoutException, java.util.concurrent.TimeoutException {
-		refreshPage();
-		troubleTicket.landingOnTroubleTicketPageUsingJS();
-		handleClickByJS("ShowFilterOnTroubleTicketingPage_XPATH");
-		Thread.sleep(1000);
-		handleCalenderOnTroubleTicket(2);
-		troubleTicket.createAgGridTableFile();
-		String renamedFile = troubleTicket.downloadFileAndRename();
-		troubleTicket.verifyAllRecordsFromSecondFileExistInMainFile(renamedFile);
 
-	}
-	@Description("verify Distance in kms value with User Lat and User Long column")
-	@Test(priority = 17, dependsOnMethods = { "testLogin" })
+	@Description("verify Distance should be come in TT report in case of MobileApp transaction.")
+	@Test(priority = 20, dependsOnMethods = { "testLogin" })
 	public void distanceValueBasedOnUserLatAndUserLong()
 			throws InterruptedException, TimeoutException, java.util.concurrent.TimeoutException {
 		refreshPage();
 		troubleTicket.landingOnTroubleTicketPageUsingJS();
-	//	handleClickByJS("ShowFilterOnTroubleTicketingPage_XPATH");
-		Thread.sleep(1000);
-		handleCalenderOnTroubleTicket(11);
+		Thread.sleep(4000);
+		handleCalenderOnTroubleTicket(2);
 		troubleTicket.scrollTillDistanceHeaderOfDataGrid();
 		troubleTicket.handleUserLatAndUserlong("FileDownloadedForUserLatAndUserLong");
 	}
+
 	@Description("Verify User is able to add/resolve/close the ticket through Bulk upload")
-	@Test(priority = 18, dependsOnMethods = { "testLogin" })
-	public void bulkUploadTroubleTicket() throws InterruptedException, TimeoutException,
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 21, dependsOnMethods = {
+			"testLogin" })
+	public void bulkUploadTroubleTicket(String siteId) throws InterruptedException, TimeoutException,
 			java.util.concurrent.TimeoutException, IOException, CsvException {
 		refreshPage();
 		troubleTicket.landingOnTroubleTicketPageUsingJS();
 		troubleTicket.addTicketbulkUpload();
-		troubleTicket.addTicket_ReportFilterAndExport();
+		troubleTicket.addTicket_ReportFilterAndExport("Assign", siteId);
+		troubleTicket.writeData("Resolve");
+		troubleTicket.writeData("Close");
 
-		troubleTicket.landingOnTroubleTicketPageUsingJS();
-		troubleTicket.writeData("Resolved");
-		troubleTicket.resolvedTicketbulkUpload();
-		troubleTicket.resolvedTicket_ReportFilterAndExport();
+		/*
+		 * troubleTicket.landingOnTroubleTicketPageUsingJS();
+		 * troubleTicket.resolvedTicketbulkUpload();
+		 * troubleTicket.landingOnTroubleTicketPageUsingJS();
+		 * troubleTicket.closedTicketbulkUpload();
+		 * troubleTicket.addTicket_ReportFilterAndExport("Closed",siteId);
+		 */
 
+	}
+
+	@Description("Verify TMS User can Assign RTTS ticket from Referred to Assign.")
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 22, dependsOnMethods = {
+			"testLogin" })
+	public void verifyReferredRTTStoAssign(String siteId) throws InterruptedException {
+		refreshPage();
 		troubleTicket.landingOnTroubleTicketPageUsingJS();
-		troubleTicket.writeData("Closed");
-		troubleTicket.closedTicketbulkUpload();
-		troubleTicket.closedTicket_ReportFilterAndExport();
+		troubleTicket.verifyStatusReferredToAssign(siteId, BaseDataForAPI.prNumber);
+
+	}
+
+	@Description("Verify TMS User can Assign RTTS ticket from Assign To Inprogress.")
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 23, dependsOnMethods = {
+			"testLogin" })
+	public void verifyAssignRTTSToInProgress(String siteId) throws InterruptedException {
+		refreshPage();
+		troubleTicket.landingOnTroubleTicketPageUsingJS();
+		troubleTicket.verifyStatusAssignToInprogress(siteId, BaseDataForAPI.prNumber);
+
+	}
+
+	@Description("Verify TMS can Restore the RTTS ticket with all the mandatory fields.")
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 24)
+	public void verifyRestoreTheRTTSticket(String siteId, String rcaCategory, String rcaSubCategory, String rcaReason,String selectFaultArea,String faultAreaDetails,String resolutionMethod)
+			throws InterruptedException {
+		refreshPage();
+		troubleTicket.landingOnTroubleTicketPageUsingJS();
+		troubleTicket.verifyRestoreTheRTTSticket(siteId, BaseDataForAPI.prNumber, rcaCategory, rcaSubCategory,
+				rcaReason,selectFaultArea,faultAreaDetails,resolutionMethod);
+	}
+
+	@Description("Verify Once RTTS Ticket is Resolved from TMS then closure will be done from RTTS")
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 25)
+	public void verifyResolvedTheRTTSticket(String siteId,String statusReason) throws InterruptedException {
+		refreshPage();
+		troubleTicket.landingOnTroubleTicketPageUsingJS();
+		troubleTicket.verifyResolvedTheRTTSticket(siteId, BaseDataForAPI.prNumber,statusReason);
+
+	}
+
+	@Description("Verify If RTTS Closed the ticket then same status should be updated at TMS end also.")
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 26)
+	public void verifyClosedTheRTTSticket(String siteId) throws InterruptedException {
+		refreshPage();
+		troubleTicket.landingOnTroubleTicketPageUsingJS();
+		troubleTicket.verifyClosedTicket(siteId, BaseDataForAPI.prNumber);
+
 	}
 
 }

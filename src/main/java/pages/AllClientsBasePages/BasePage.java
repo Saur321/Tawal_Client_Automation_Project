@@ -80,7 +80,7 @@ public class BasePage {
 	public static int totalSiteIdCountInDownloadedFileApollo = 0;
 	SoftAssert sa = new SoftAssert();
 	
-	//@BeforeClass
+	@BeforeClass
 	public void setUp(String clientName) {
 	    PropertyConfigurator.configure("./src/main/resources/iTower_Clients_Properties/properties_"+clientName+"/log4j.properties");
 	    log.info("Test Execution Starts !!");
@@ -204,7 +204,7 @@ public class BasePage {
 		// Generic method to enter text into an input box
 		public void enterTextIntoInputBoxForLogin(String locatorKey, String value) {
 			try {
-				if (locatorKey.endsWith("_ID")) {
+				if (locatorKey.endsWith("_ID" )) {
 					wait.until(ExpectedConditions.presenceOfElementLocated(By.id(OR.getProperty(locatorKey))))
 							.sendKeys(value);
 				} else if (locatorKey.endsWith("_XPATH")) {
