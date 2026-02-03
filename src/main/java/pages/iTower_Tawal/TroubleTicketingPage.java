@@ -17,6 +17,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -28,6 +29,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -66,7 +69,8 @@ public class TroubleTicketingPage extends BasePage {
 	public String ticketIdText;
 	public String ticketIdValue;
 	public String OPCOSiteId;
-	public String TicketId;
+	public String TicketId1;
+	public String TicketId2;
 
 	// handle List functionalities Of TroubleTicket
 	private void handleListOfTroubleTicket(String locatorKey, String value) {
@@ -103,7 +107,8 @@ public class TroubleTicketingPage extends BasePage {
 
 	// Add new trouble ticket
 	public void addNewTroubleTicket(String siteId, String ticketType, String severity, String assignedTo,
-			String alarmDescription, String serviceImpact) throws InterruptedException, TimeoutException {
+			String alarmDescription, String serviceImpact, String TicketValue)
+			throws InterruptedException, TimeoutException {
 
 		/* Ticket should be added */
 		Allure.step("/* Verify Ticket is added */");
@@ -128,6 +133,8 @@ public class TroubleTicketingPage extends BasePage {
 		clickUsingDynamicLocator("assignedTo_XPATH", assignedTo);
 
 		// Handle alarm description
+		// Alarm desc should come based on Ticket Type, Equipment and severity
+		Allure.step("/* Alarm desc should come based on Ticket Type, Equipment and severity */");
 		click("selectAlarmDescription_XPATH");
 		enterTextIntoInputBox("selectAlarm_XPATH", alarmDescription);
 		clickUsingDynamicLocator("clickOnAlarm_XPATH", alarmDescription);
@@ -148,9 +155,8 @@ public class TroubleTicketingPage extends BasePage {
 		enterTextIntoInputBox("enter_Value_starttime_XPATH", currentTimeStr);
 
 		/* File should be added while adding */
-		Allure.step("/* File should be added while adding */");
+		Allure.step("/* Files should be added while adding the ticket- Jpg, png, excel, pdf, word */");
 		uploadThexlsxFile("AddTicket");
-
 		performScrolling("addTicket_XPATH");
 		click("addTicket_XPATH");
 		String ErrorMessage = getText("ErrorMessageOnTicketForm_XPATH");
@@ -190,7 +196,12 @@ public class TroubleTicketingPage extends BasePage {
 		String[] splitedMessage = ErrorMessage.split(":");
 		if (splitedMessage[0].equalsIgnoreCase("Trouble ticket added successfully (Ticket Id ")) {
 			String TicketID = splitedMessage[1];
-			TicketId = TicketID.replaceAll("[^a-zA-Z0-9]", "");
+
+			if (TicketValue.equals("First")) {
+				TicketId1 = TicketID.replaceAll("[^a-zA-Z0-9]", "");
+			} else if (TicketValue.equals("Second")) {
+				TicketId2 = TicketID.replaceAll("[^a-zA-Z0-9]", "");
+			}
 			// Allure.step("Trouble ticket added successfully and TicketID is : " +
 			// TicketId, Status.PASSED);
 			switchToDefaultContentFromIframe();
@@ -198,7 +209,14 @@ public class TroubleTicketingPage extends BasePage {
 			explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
 			click("ShowFilterOnTroubleTicketingPage_XPATH");
 			Thread.sleep(1000);
-			handleInputFieldByJS("TicKetIDInputField_XPATH", TicketId);
+			if (TicketValue.equals("First")) {
+				handleInputFieldByJS("TicKetIDInputField_XPATH", TicketId1);
+			}
+
+			else if (TicketValue.equals("Second")) {
+				handleInputFieldByJS("TicKetIDInputField_XPATH", TicketId2);
+			}
+
 			handleInputFieldByJS("siteIDInputField_XPATH", siteId);
 			Thread.sleep(1000);
 			handleClickByJS("filter_Report_XPATH");
@@ -207,15 +225,17 @@ public class TroubleTicketingPage extends BasePage {
 			for (WebElement ticketID : listOfTicketID) {
 				String Ticket = ticketID.getText();
 
-				if (Ticket.equalsIgnoreCase(TicketId)) {
-					Assert.assertEquals(Ticket, TicketId, "Ticket added successfully");
-					Allure.step("Ticket added successfully with validation : " + TicketId);
+				if (Ticket.equalsIgnoreCase(TicketId1)) {
+					Assert.assertEquals(Ticket, TicketId1, "Ticket added successfully");
+					Allure.step("Ticket added successfully with validation : " + TicketId1);
+					break;
+				} else if (Ticket.equalsIgnoreCase(TicketId2)) {
+					Assert.assertEquals(Ticket, TicketId2, "Ticket added successfully");
+					Allure.step("Ticket added successfully with validation : " + TicketId2);
 					break;
 				}
 
 			}
-			Allure.step(
-					"If user has not select equipment while creating the ticket but once ticket is created equipment should get populate based on alarm configuration");
 			click("exportTroublTckt_XPATH");
 			Thread.sleep(1000);
 			String renameFile = "AddTicketForAlarm " + alarmDescription.replaceAll("[^A-Za-z0-9]", "");
@@ -240,29 +260,11 @@ public class TroubleTicketingPage extends BasePage {
 	public void addTicketbulkUpload() throws InterruptedException, TimeoutException {
 		explicitWaitWithClickable("troubleTicketBulkUpload_XPATH");
 		handleIframe("iframeTroubleTicketBulkUpdate_ID");
-		uploadTheCSVFile("BulkUploadForAddTicket");
+		uploadTheCSVFile("TTBulkAdd");
 		explicitWaitWithpresenceOfElementLocated("uploadButton_XPATH");
 		explicitWaitWithClickable("uploadButton_XPATH");
-		String NoRecorduploadedErrorMessage = getText("availableRecords_XPATH");
-		if (NoRecorduploadedErrorMessage.equalsIgnoreCase("No record uploaded.")) {
-			deleteOldFilesFromLocation("ErrorDataFile_BulkUpload_Add");
-			click("exportFailedTroublTckt_XPATH");
-			// Add file renaming logic here
-			renameDownloadedFile("TicketBulkUpdate_", "ErrorDataFile_BulkUpload_Add");
-			verifyUsingAssertFileIsExistInLocation("ErrorDataFile_BulkUpload_Add");
-			Assert.assertNotEquals(NoRecorduploadedErrorMessage, "No record uploaded.");
-
-		}
-		try {
-			deleteOldFilesFromLocation("ErrorDataFile_BulkUpload_Add");
-			click("exportFailedTroublTckt_XPATH");
-			// Add file renaming logic here
-			renameDownloadedFile("TicketBulkUpdate_", "ErrorDataFile_BulkUpload_Add");
-			verifyUsingAssertFileIsExistInLocation("ErrorDataFile_BulkUpload_Add");
-
-		} catch (Exception e) {
-			// do nothing if no data is going to error
-		}
+		String actualText = getText("availableRecords_XPATH");
+		assertTrue(actualText.contains("All record(s) uploaded successfully."));
 		driver.switchTo().defaultContent();
 		Thread.sleep(2000);
 		click("closeFrame_XPATH");
@@ -273,29 +275,11 @@ public class TroubleTicketingPage extends BasePage {
 	public void resolvedTicketbulkUpload() throws InterruptedException, TimeoutException {
 		explicitWaitWithClickable("troubleTicketBulkUpload_XPATH");
 		handleIframe("iframeTroubleTicketBulkUpdate_ID");
-		uploadTheCSVFile("BulkUploadForResolvedTicket");
+		uploadTheCSVFile("TTBulkResolve");
 		explicitWaitWithpresenceOfElementLocated("uploadButton_XPATH");
 		explicitWaitWithClickable("uploadButton_XPATH");
-		String NoRecorduploadedErrorMessage = getText("availableRecords_XPATH");
-		if (NoRecorduploadedErrorMessage.equalsIgnoreCase("No record uploaded.")) {
-			deleteOldFilesFromLocation("ErrorDataFile_BulkUpload_Resolved");
-			click("exportFailedTroublTckt_XPATH");
-			// Add file renaming logic here
-			renameDownloadedFile("TicketBulkUpdate_", "ErrorDataFile_BulkUpload_Resolved");
-			verifyUsingAssertFileIsExistInLocation("ErrorDataFile_BulkUpload_Resolved");
-			Assert.assertNotEquals(NoRecorduploadedErrorMessage, "No record uploaded.");
-
-		}
-		try {
-			deleteOldFilesFromLocation("ErrorDataFile_BulkUpload_Resolved");
-			click("exportFailedTroublTckt_XPATH");
-			// Add file renaming logic here
-			renameDownloadedFile("TicketBulkUpdate_", "ErrorDataFile_BulkUpload_Resolved");
-			verifyUsingAssertFileIsExistInLocation("ErrorDataFile_BulkUpload_Resolved");
-
-		} catch (Exception e) {
-			// do nothing if no data is going to error
-		}
+		String actualText = getText("availableRecords_XPATH");
+		assertTrue(actualText.contains("All record(s) uploaded successfully."));
 		driver.switchTo().defaultContent();
 		Thread.sleep(2000);
 		click("closeFrame_XPATH");
@@ -306,29 +290,11 @@ public class TroubleTicketingPage extends BasePage {
 	public void closedTicketbulkUpload() throws InterruptedException, TimeoutException {
 		explicitWaitWithClickable("troubleTicketBulkUpload_XPATH");
 		handleIframe("iframeTroubleTicketBulkUpdate_ID");
-		uploadTheCSVFile("BulkUploadForClosedTicket");
+		uploadTheCSVFile("TTBulkClose");
 		explicitWaitWithpresenceOfElementLocated("uploadButton_XPATH");
 		explicitWaitWithClickable("uploadButton_XPATH");
-		String NoRecorduploadedErrorMessage = getText("availableRecords_XPATH");
-		if (NoRecorduploadedErrorMessage.equalsIgnoreCase("No record uploaded.")) {
-			deleteOldFilesFromLocation("ErrorDataFile_BulkUpload_Closed");
-			click("exportFailedTroublTckt_XPATH");
-			// Add file renaming logic here
-			renameDownloadedFile("TicketBulkUpdate_", "ErrorDataFile_BulkUpload_Closed");
-			verifyUsingAssertFileIsExistInLocation("ErrorDataFile_BulkUpload_Closed");
-			Assert.assertNotEquals(NoRecorduploadedErrorMessage, "No record uploaded.");
-
-		}
-		try {
-			deleteOldFilesFromLocation("ErrorDataFile_BulkUpload_Closed");
-			click("exportFailedTroublTckt_XPATH");
-			// Add file renaming logic here
-			renameDownloadedFile("TicketBulkUpdate_", "ErrorDataFile_BulkUpload_Closed");
-			verifyUsingAssertFileIsExistInLocation("ErrorDataFile_BulkUpload_Closed");
-
-		} catch (Exception e) {
-			// do nothing if no data is going to error
-		}
+		String actualText = getText("availableRecords_XPATH");
+		assertTrue(actualText.contains("All record(s) uploaded successfully."));
 		driver.switchTo().defaultContent();
 		Thread.sleep(2000);
 		click("closeFrame_XPATH");
@@ -336,16 +302,21 @@ public class TroubleTicketingPage extends BasePage {
 	}
 
 	// export add ticket file using bulk upload
-	public void addTicket_ReportFilterAndExport() throws InterruptedException, TimeoutException {
-		deleteOldFilesFromLocation("AddTicket_BulkUpload");
-		refreshPage();
+	public void addTicket_ReportFilterAndExport(String status, String siteID)
+			throws InterruptedException, TimeoutException {
+		// handleClickByJS("ShowFilterOnTroubleTicketingPage_XPATH");
+		handleSelectTicketStatusSelected(status);
+		handleInputFieldByJS("siteIDInputField_XPATH", siteID);
 		click("filterReport_XPATH");
 		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
 		ticketIdValue = getText("open_Ticket_ID_XPATH");
+		handleClickByJS("ShowFilterOnTroubleTicketingPage_XPATH");
 		handleInputFieldByJS("TicKetIDInputField_XPATH", ticketIdValue);
-		click("filterReport_XPATH");
-		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
 		click("exportTroublTckt_XPATH");
+		Thread.sleep(1000);
+		handleClickByJS("filterReport_XPATH");
+		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
+
 		// Add file renaming logic here
 		renameDownloadedFile("TroubleTicketing_", "AddTicket_BulkUpload");
 		verifyUsingAssertFileIsExistInLocation("AddTicket_BulkUpload");
@@ -532,7 +503,9 @@ public class TroubleTicketingPage extends BasePage {
 	/* Paging (number of TT in a page) should be working fine */
 	public void handlePaginationOnDataGridUI()
 			throws InterruptedException, FileNotFoundException, IOException, TimeoutException {
+
 		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
+		Thread.sleep(5000);
 		handleCalenderOnTroubleTicket(2);
 		String pageCount = getText("totalPageCount_XPATH");
 		Allure.step("Total Pages count : " + pageCount);
@@ -1518,7 +1491,7 @@ public class TroubleTicketingPage extends BasePage {
 
 	/* TT closure group or Creater user should able to close the ticket */
 	public void handleClosedTicket(String alarmDescription, String siteId, String rcaCategory, String rcaSubCategory,
-			String rcaReason) throws InterruptedException {
+			String rcaReason, String TicketValue) throws InterruptedException {
 
 		Thread.sleep(1000);
 		handleClickByJS("click_On_Alarm_Description_XPATH");
@@ -1527,7 +1500,13 @@ public class TroubleTicketingPage extends BasePage {
 		wait.until(ExpectedConditions
 				.elementToBeClickable(By.xpath("//ul//li//label//span[text()='" + alarmDescription + "']"))).click();
 		clickEscape();
-		handleInputFieldByJS("TicKetIDInputField_XPATH", TicketId);
+		if (TicketValue.equals("First")) {
+			handleInputFieldByJS("TicKetIDInputField_XPATH", TicketId1);
+		}
+
+		else if (TicketValue.equals("Second")) {
+			handleInputFieldByJS("TicKetIDInputField_XPATH", TicketId2);
+		}
 		handleInputFieldByJS("siteIDInputField_XPATH", siteId);
 		Thread.sleep(1000);
 		handleClickByJS("ticketStatusID_XPATH");
@@ -1539,28 +1518,12 @@ public class TroubleTicketingPage extends BasePage {
 		click("open_Ticket_ID_XPATH");
 		handleIframe("iframe_ID");
 		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
-		if (siteId.equals("ZAC200008843")) {
-			handleClickByJS("clickTicketStatus_XPATH");
-			Allure.step("TT reversal Group user can reassign the TT from Resolve to assign");
-			wait.until(ExpectedConditions.elementToBeClickable(
-					By.xpath("//input[@type='radio']/following-sibling::span[normalize-space()='Assign']"))).click();
-			handleInputFieldByJS("remarks_On_Close_Ticket_XPATH", "Resolved");
-			performScrolling("click_On_Update_Ticket_XPATH");
-			click("click_On_Update_Ticket_XPATH");
-			String actualText = getText("verify_Ticket_Closed_XPATH");
-			Assert.assertTrue(actualText.contains("Trouble ticket updated successfully"));
-			Thread.sleep(1000);
 
-		}
-
-		// click("closedButton_XPATH");
 		String ticketStatus = getText("ticket_Status_XPATH");
 		if (!(ticketStatus.equals("Closed"))) {
 
-			/*
-			 * While closing the Ticket user can update Problem start date, end date, RCA
-			 * details, Remarks
-			 */
+			Allure.step(
+					"/* While closing the Ticket user can update Problem start date, end date, RCA details, Remarks */");
 			click("ticket_Status_XPATH");
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Closed']"))).click();
 			click("problem_End_Date_XPATH");
@@ -1573,17 +1536,9 @@ public class TroubleTicketingPage extends BasePage {
 			LocalTime endTime = originalTime.plusMinutes(1);
 			String incrementedTimeStr = endTime.format(DateTimeFormatter.ofPattern("HH:mm"));
 			handleInputFieldByJS("problem_End_Time_XPATH", incrementedTimeStr);
-			/*
-			 * handleClickByJS("rca_Category_XPATH"); wait.until(ExpectedConditions
-			 * .elementToBeClickable(By.xpath("//span[normalize-space()='" + rcaCategory +
-			 * "']"))).click(); click("rca_Sub_Category_XPATH");
-			 * wait.until(ExpectedConditions
-			 * .elementToBeClickable(By.xpath("//span[normalize-space()='" + rcaSubCategory
-			 * + "']"))).click(); Thread.sleep(1000);
-			 * handleInputFieldByJS("rca_Reason_XPATH", rcaReason);
-			 */
 
 			/* File should be added while closing the ticket */
+			Allure.step("/* Files should be added while closing the ticket- Jpg, png, excel, pdf, word */");
 			uploadThepngFile("AddTicket");
 			handleInputFieldByJS("remarks_On_Close_Ticket_XPATH", "Closed");
 			performScrolling("click_On_Update_Ticket_XPATH");
@@ -1591,7 +1546,8 @@ public class TroubleTicketingPage extends BasePage {
 			Thread.sleep(2000);
 			String actualText = getText("verify_Ticket_Closed_XPATH");
 			Assert.assertTrue(actualText.contains("Trouble ticket closed successfully"));
-			Allure.step("No action can be done on ticket once ticket is closed");
+			Thread.sleep(1000);
+			Allure.step("/* No action can be done on ticket once ticket is closed */");
 			handleInputFieldByJS("enterValue_HubSiteId_XPATH", "txtHubSite");
 			click("click_On_Update_Ticket_XPATH");
 			String ErrorText = getText("ErrorMessageOnTicketForm_XPATH");
@@ -1673,48 +1629,65 @@ public class TroubleTicketingPage extends BasePage {
 
 	// handle Resolved Ticket
 	public void handleResolvedTicket(String alarmDescription, String siteId, String rcaCategory, String rcaSubCategory,
-			String rcaReason) throws InterruptedException {
-		click("ShowFilterOnTroubleTicketingPage_XPATH");
+			String rcaReason, String remarks, String TicketValue,String selectFaultArea,String faultAreaDetails,String resolutionMethod) throws InterruptedException {
 		Thread.sleep(1000);
+		Allure.step(
+				"/* Only Assignee and Creator, TT closure group user can take action on ticket, no ther user should able to resolve the TT */");
 		handleClickByJS("click_On_Alarm_Description_XPATH");
 		enterTextIntoInputBox("alarmDescriptionn_XPATH", alarmDescription);
 
 		wait.until(ExpectedConditions
 				.elementToBeClickable(By.xpath("//ul//li//label//span[contains(text(),'" + alarmDescription + "')]")))
 				.click();
-		handleInputFieldByJS("TicKetIDInputField_XPATH", TicketId);
+		clickEscape();
+		if (TicketValue.equals("First")) {
+			handleInputFieldByJS("TicKetIDInputField_XPATH", TicketId1);
+		}
+
+		else if (TicketValue.equals("Second")) {
+			handleInputFieldByJS("TicKetIDInputField_XPATH", TicketId2);
+		}
 		handleInputFieldByJS("siteIDInputField_XPATH", siteId);
-		click("filterReport_XPATH");
+		handleClickByJS("filterReport_XPATH");
 		Thread.sleep(5000);
 		handleClickByJS("open_Ticket_ID_XPATH");
 		handleIframe("iframe_ID");
 		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
 
-		Allure.step("Alarm history should get maintened");
+		Allure.step("/* Alarm history should get maintened */");
 		handleClickByJS("cilck_On_Alarm_History_XPATH");
-//	click("export_Alarm_History_XPATH");
+		// click("export_Alarm_History_XPATH");
 
+		Allure.step("/* TT assignment history should get maintained */");
 		handleClickByJS("cilck_On_Assign_Detail_XPATH");
 		click("export_Assign_Details_XPATH");
+
 		Thread.sleep(1000);
 		handleClickByJS("cilck_On_Update_Ticket_XPATH");
 		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
+		Thread.sleep(2000);
+		Allure.step(
+				"If user has not select equipment while creating the ticket but once ticket is created equipment should get populate based on alarm configuration");
+		String s = getText("equipment_Details_XPATH");
+		Allure.step("Equipment Value : " + s);
+
+		Allure.step("/* Verify Operator detail get filled based on Site operator mapping */");
+		click("click_On_Operator_XPATH");
+		List<WebElement> opratorList = driver.findElements(By.xpath(
+				"//li[@class='operatorList']//ul//li/label/input[@aria-selected='true']/following-sibling::span"));
+		for (WebElement value : opratorList) {
+			String cityname = value.getText();
+			Allure.step("operator details Value : " + cityname);
+
+		}
+		clickEscape();
 		Thread.sleep(2000);
 		handleClickByJS("click_On_Ticket_Status_XPATH");
 		wait.until(ExpectedConditions.elementToBeClickable(
 				By.xpath("//input[@type='radio']/following-sibling::span[normalize-space()='Resolved']"))).click();
 
-		/* Operator detail should also get filled based on Site operator mapping */
-		Allure.step("/* Verify Operator detail get filled based on Site operator mapping */");
-//	click("click_On_Operator_XPATH");
-		// enterTextIntoInputBox("enter_Operator_Value_XPATH", "1-7076025");
-//		handleOperator();
-		/*
-		 * IF RCA is mandatory against alarm then User needs to provide the RCA category
-		 * against ticket while resolving
-		 */
 		Allure.step(
-				"/* Verify IF RCA is mandatory then User needs to provide the RCA category against ticket while resolving */");
+				"/* IF RCA is mandatory against alarm then User needs to provide the RCA category against ticket while resolving */");
 		handleClickByJS("rca_Category_XPATH");
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='" + rcaCategory + "']")))
 				.click();
@@ -1724,49 +1697,42 @@ public class TroubleTicketingPage extends BasePage {
 				.click();
 		Thread.sleep(1000);
 		handleInputFieldByJS("rca_Reason_XPATH", rcaReason);
+		Thread.sleep(1000);
 		enterTextIntoInputBox("fuel_Level_XPATH", "value");
 		enterTextIntoInputBox("DG_Meter_Reading_XPATH", "value");
 		enterTextIntoInputBox("grid_Meter_Reading_XPATH", "value");
 		click("select_Fault_Area_XPATH");
-		clickUsingDynamicLocator("chhose_select_Fault_Area_XPATH", "Access PtMP");
+		clickUsingDynamicLocator("chhose_select_Fault_Area_XPATH", selectFaultArea);
 		click("Select_Fault_Area_Detail_XPATH");
-		clickUsingDynamicLocator("chhose_select_Fault_Area_XPATH", "AP has gone down(Sector is down)");
+		clickUsingDynamicLocator("chhose_select_Fault_Area_XPATH", faultAreaDetails);
 		click("select_Resolution_Method_XPATH");
-		clickUsingDynamicLocator("chhose_select_Fault_Area_XPATH", "Cable damaged by Fire");
-
-	}
-
-	// add Spare Parts Inside Resolved Ticket
-	public void addSparePartsInsideResolvedTicket(String remarks, String selectSparePartsCategory,
-			String selectSpareParts, String selectQuantities) throws InterruptedException {
-
-		/* User can add the spare part while resolving the ticket. */
-		Allure.step("/* User can add the spare part while resolving the ticket. */");
+		clickUsingDynamicLocator("chhose_select_Fault_Area_XPATH", resolutionMethod);
 		performScrolling("spare_Part_XPATH");
 		click("action_Taken_XPATH");
 		click("choose_action_Taken_XPATH");
-
+		enterTextIntoInputBox("fuel_Level_XPATH", "value");
+		enterTextIntoInputBox("grid_Meter_Reading_XPATH", "value");
 		/* Files should be added while updating the ticket */
-		Allure.step("/* Files added while updating the ticket */");
+		Allure.step("/* Files should be added while updating the ticket- Jpg, png, excel, pdf, word */");
 		uploadThedocxFile("addTicket");
 		handleInputFieldByJS("remarks_On_Resolved_Ticket_XPATH", remarks);
 		click("update_Resolved_Ticket_CSS");
 		String actualText = getText("verify_Resolved_Ticket_Updated_CSS");
 		Assert.assertTrue(actualText.contains("Trouble ticket resolved successfully"));
 		Thread.sleep(1000);
+
 	}
 
 	/* For each update audit log should be maintained */
 	public void exportAuditLogFile() throws InterruptedException, TimeoutException {
 		Thread.sleep(1000);
-		Allure.step("/* For each update audit log is maintained */");
+		Allure.step("/* For each update audit log should be maintained */");
 		performScrolling("export_Added_Spare_Parts_File_XPATH");
 		click("Show_Ticket_Attachments_XPATH");
 		click("export_Added_Spare_Parts_File_XPATH");
 		Thread.sleep(1000);
 		renameDownloadedFile("TTRemarks_", "AuditLogExportedFile");
 		verifyUsingAssertFileIsExistInLocation("AuditLogExportedFile");
-
 		switchToDefaultContentFromIframe();
 		handleClickByJS("closeFrame_XPATH");
 	}
@@ -2011,7 +1977,6 @@ public class TroubleTicketingPage extends BasePage {
 			throws InterruptedException, TimeoutException {
 		Thread.sleep(1000);
 		click("ShowFilterOnTroubleTicketingPage_XPATH");
-		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
 		handleClickByJS("ticketStatusID_XPATH");
 		click("click_On_All_XPATH");
 		clickEscape();
@@ -2021,7 +1986,7 @@ public class TroubleTicketingPage extends BasePage {
 				.xpath("//span[normalize-space()='" + ticketMode + "']/preceding-sibling::input[@type=\"checkbox\"]")))
 				.click();
 		handleInputFieldByJS("TicKetIDInputField_XPATH", ticketID);
-		clickEscape();
+		//clickEscape();
 		handleCalenderOnTroubleTicket(5);
 		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
 		Thread.sleep(2000);
@@ -2145,8 +2110,8 @@ public class TroubleTicketingPage extends BasePage {
 
 	public void writeData(String ticketType) throws IOException, CsvException {
 		String userDir = new File(System.getProperty("user.dir")).getAbsolutePath();
-		String path = userDir + "\\src\\main\\resources\\iTower_Clients_Excel\\excel_MAST\\BulkUploadFor" + ticketType
-				+ "Ticket.csv";
+		String path = userDir + "\\src\\main\\resources\\iTower_Clients_Excel\\excel_Tawal\\TTBulk" + ticketType
+				+ ".csv";
 
 		File file = new File(path);
 		List<String[]> csvData = new ArrayList<>();
@@ -2178,7 +2143,7 @@ public class TroubleTicketingPage extends BasePage {
 
 	// Update ETA and ETR fields
 	public void updateETAAndETRByAssignUser(String alarmDescription, String siteId, String ETAValue, String ETRValue,
-			String assignedTo, String remarks) throws InterruptedException {
+			String assignedTo, String remarks, String TicketValue) throws InterruptedException {
 		Thread.sleep(1000);
 		handleClickByJS("click_On_Alarm_Description_XPATH");
 		enterTextIntoInputBox("alarmDescriptionn_XPATH", alarmDescription);
@@ -2187,7 +2152,13 @@ public class TroubleTicketingPage extends BasePage {
 				.elementToBeClickable(By.xpath("//ul//li//label//span[contains(text(),'" + alarmDescription + "')]")))
 				.click();
 		clickEscape();
-		handleInputFieldByJS("TicKetIDInputField_XPATH", TicketId);
+		if (TicketValue.equals("First")) {
+			handleInputFieldByJS("TicKetIDInputField_XPATH", TicketId1);
+		}
+
+		else if (TicketValue.equals("Second")) {
+			handleInputFieldByJS("TicKetIDInputField_XPATH", TicketId2);
+		}
 		handleInputFieldByJS("siteIDInputField_XPATH", siteId);
 		Thread.sleep(1000);
 		handleClickByJS("filterReport_XPATH");
@@ -2197,12 +2168,13 @@ public class TroubleTicketingPage extends BasePage {
 		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
 
 		// select Assigned To
+		Allure.step("/* Assigned user should able to reassign the ticket to another user */");
 		click("reassign_User_XPATH");
 		enterTextIntoInputBox("selectAssigned_XPATH", assignedTo);
 		clickUsingDynamicLocator("assignedTo_XPATH", assignedTo);
 
 		/* Assigned user should able to update ETA/ETR */
-		Allure.step("/* Assigned user is able to update ETA/ETR */");
+		Allure.step("/* Assigned user should able to update ETA/ETR */");
 		enterTextIntoInputBox("ETA_Value_XPATH", ETAValue);
 		enterTextIntoInputBox("ETR_Value_XPATH", ETRValue);
 
@@ -2236,7 +2208,7 @@ public class TroubleTicketingPage extends BasePage {
 
 	// handle Select SPM Region dropdown filter
 	public void handleSelect_SPM_Region() throws TimeoutException, InterruptedException {
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		clickUsingDynamicLocator("click_On_Select_Filter_XPATH", "Select Region");
 		String firstValue = clickUsingDynamicLocator("selct_First_Value_From_DropDown_XPATH", "Central");
 		clickUsingDynamicLocator("click_On_All_CheckBox_XPATH", String.valueOf(1));
@@ -2305,14 +2277,11 @@ public class TroubleTicketingPage extends BasePage {
 
 	}// handle Select ticket status dropdown filter
 
-	public void handleSelectTicketStatusSelected() throws TimeoutException {
+	public void handleSelectTicketStatusSelected(String status) throws TimeoutException {
 		clickUsingDynamicLocator("click_On_Select_Filter_XPATH", "9 Ticket Status Selected");
-		String firstValue = clickUsingDynamicLocator("selct_First_Value_From_DropDown_XPATH", "Open");
-		clickUsingDynamicLocator("click_On_All_CheckBox_XPATH", String.valueOf(7));
 		clickUsingDynamicLocator("click_On_None_CheckBox_XPATH", String.valueOf(7));
-		enterTextIntoInputBox("getText_Select_Ticket_Status_XPATH", firstValue);
-		clearTextFromInputBox("getText_Select_Ticket_Status_XPATH");
-		clickUsingDynamicLocator("selct_First_Value_From_DropDown_XPATH", "Open");
+		clickUsingDynamicLocator("selct_First_Value_From_DropDown_XPATH", status);
+		clickEscape();
 
 	}// handle Select Sub Region dropdown filter
 
@@ -2520,6 +2489,7 @@ public class TroubleTicketingPage extends BasePage {
 		// click("click_SiteNameCheckbox_XPATH");
 		enterTextIntoInputBox("enterFilterName_XPATH", "New Filter Save");
 		click("clickSaveButton_ID");
+		Thread.sleep(1000);
 		switchToDefaultContentFromIframe();
 		click("close_Frame_XPATH");
 		// click("ShowFilterOnTroubleTicketingPage_XPATH");
@@ -2528,6 +2498,7 @@ public class TroubleTicketingPage extends BasePage {
 		Thread.sleep(2000);
 		clickUsingDynamicLocator("selct_First_Value_From_DropDown_XPATH", "New Filter Save");
 		click("filterReport_XPATH");
+		Thread.sleep(1000);
 		click("exportTroublTckt_XPATH");
 	}
 
@@ -2536,11 +2507,13 @@ public class TroubleTicketingPage extends BasePage {
 		click("click_FullScreenButton_XPATH");
 		Thread.sleep(1000);
 		handleClickByJS("filterReport_XPATH");
+		Thread.sleep(1000);
 	}
 
 	// Handle refresh button functionality
-	public void applyRefreshButton() {
+	public void applyRefreshButton() throws InterruptedException {
 		click("clickToggle_XPATH");
+		Thread.sleep(1000);
 	}
 
 	// Land On Trouble Ticket Module Using JS
@@ -2576,7 +2549,7 @@ public class TroubleTicketingPage extends BasePage {
 
 		String basePath = System.getProperty("user.dir") + "\\src\\main\\resources\\";
 
-		File downloadDirectoryTemplate = new File(basePath + "iTower_Clients_Excel\\excel_MAST\\");
+		File downloadDirectoryTemplate = new File(basePath + "iTower_Clients_Excel\\excel_Tawal\\");
 		String templateCsvPath = downloadDirectoryTemplate + "\\" + status + ".csv";
 
 		File downloadDirectory = new File(basePath + "downloadExcel\\");
@@ -2992,4 +2965,261 @@ public class TroubleTicketingPage extends BasePage {
 		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
 
 	}
-}
+
+	public void verifyTicketStatusFromResolvedToAssignByTTReversalGroup(String alarmDescription, String siteId,
+			String TicketValue) throws InterruptedException {
+		Thread.sleep(1000);
+		handleClickByJS("click_On_Alarm_Description_XPATH");
+		enterTextIntoInputBoxUsingActionsClass("alarmDescriptionn_XPATH", alarmDescription);
+
+		wait.until(ExpectedConditions
+				.elementToBeClickable(By.xpath("//ul//li//label//span[text()='" + alarmDescription + "']"))).click();
+		clickEscape();
+		if (TicketValue.equals("First")) {
+			handleInputFieldByJS("TicKetIDInputField_XPATH", TicketId1);
+		}
+
+		else if (TicketValue.equals("Second")) {
+			handleInputFieldByJS("TicKetIDInputField_XPATH", TicketId2);
+		}
+		handleInputFieldByJS("siteIDInputField_XPATH", siteId);
+		Thread.sleep(1000);
+		handleClickByJS("ticketStatusID_XPATH");
+		handleClickByJS("click_On_All_XPATH");
+		clickEscape();
+		Thread.sleep(2000);
+		handleClickByJS("filterReport_XPATH");
+		Thread.sleep(5000);
+		click("open_Ticket_ID_XPATH");
+		handleIframe("iframe_ID");
+		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
+
+		handleClickByJS("clickTicketStatus_XPATH");
+		Allure.step("TT reversal Group user can reassign the TT from Resolve to assign");
+		wait.until(ExpectedConditions.elementToBeClickable(
+				By.xpath("//input[@type='radio']/following-sibling::span[normalize-space()='Assign']"))).click();
+		handleInputFieldByJS("remarks_On_Close_Ticket_XPATH", "Resolved");
+		performScrolling("click_On_Update_Ticket_XPATH");
+		click("click_On_Update_Ticket_XPATH");
+		String actualText = getText("verify_Ticket_Closed_XPATH");
+		Assert.assertTrue(actualText.contains("Trouble ticket updated successfully"));
+		Thread.sleep(1000);
+		switchToDefaultContentFromIframe();
+		handleClickByJS("closeFrame_XPATH");
+	}
+
+	public void performLogout() {
+		WebElement value = driver.findElement(By.xpath("(//span[@id='ctl00_lblWelcomeMessage2'])[1]"));
+		Actions ac = new Actions(driver);
+		ac.click(value).perform();
+		click("click_Logout_XPATH");
+
+	}
+
+	public static String generatePRNumber() {
+		// Generate 3 random digits (000-999)
+		Random random = new Random();
+		int randomNumber = random.nextInt(1000);
+
+		// Format with leading zeros if needed
+		return String.format("RTTS%03d", randomNumber);
+	}
+
+	public static String generateEpochTime() {
+
+		long currentEpoch = Instant.now().getEpochSecond();
+		String epochString = String.valueOf(currentEpoch);
+		return epochString;
+	}
+
+	public void verifyStatusReferredToAssign(String siteId, String PRNumber) throws InterruptedException {
+		handleInputFieldByJS("siteIDInputField_XPATH", siteId);
+		handleInputFieldByJS("search_PR_Number_XPATH", PRNumber);
+		Thread.sleep(1000);
+		handleClickByJS("filterReport_XPATH");
+		Thread.sleep(10000);
+		handleClickByJS("open_Ticket_ID_XPATH");
+		handleIframe("iframe_ID");
+		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
+		Thread.sleep(2000);
+		handleClickByJS("click_On_Ticket_Status_XPATH");
+		wait.until(ExpectedConditions.elementToBeClickable(
+				By.xpath("//input[@type='radio']/following-sibling::span[normalize-space()='Assign']"))).click();
+
+		handleInputFieldByJS("remarks_On_Resolved_Ticket_XPATH", "remarks");
+		performScrolling("update_Resolved_Ticket_CSS");
+		click("update_Resolved_Ticket_CSS");
+		String actualText = getText("verify_Resolved_Ticket_Updated_CSS");
+		// monitorTicketUpdate();
+		Assert.assertTrue(actualText.contains("Trouble ticket updated successfully"));
+		Thread.sleep(1000);
+		switchToDefaultContentFromIframe();
+		handleClickByJS("closeFrame_XPATH");
+
+	}
+
+	public void verifyStatusAssignToInprogress(String siteId, String PRNumber) throws InterruptedException {
+		handleInputFieldByJS("siteIDInputField_XPATH", siteId);
+		handleInputFieldByJS("search_PR_Number_XPATH", PRNumber);
+
+		Thread.sleep(1000);
+		handleClickByJS("filterReport_XPATH");
+		Thread.sleep(10000);
+		handleClickByJS("open_Ticket_ID_XPATH");
+		handleIframe("iframe_ID");
+		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
+		Thread.sleep(2000);
+		handleClickByJS("click_On_Ticket_Status_XPATH");
+		wait.until(ExpectedConditions.elementToBeClickable(
+				By.xpath("//input[@type='radio']/following-sibling::span[normalize-space()='In Progress']"))).click();
+		handleInputFieldByJS("remarks_On_Resolved_Ticket_XPATH", "remarks");
+		performScrolling("update_Resolved_Ticket_CSS");
+		click("update_Resolved_Ticket_CSS");
+		String actualText = getText("verify_Resolved_Ticket_Updated_CSS");
+		Assert.assertTrue(actualText.contains("Trouble ticket updated successfully"));
+		Thread.sleep(1000);
+		switchToDefaultContentFromIframe();
+		handleClickByJS("closeFrame_XPATH");
+
+	}
+
+	public void verifyRestoreTheRTTSticket(String siteId, String PRNumber, String rcaCategory, String rcaSubCategory,
+			String rcaReason,String selectFaultArea,String faultAreaDetails,String resolutionMethod) throws InterruptedException {
+		handleInputFieldByJS("siteIDInputField_XPATH", siteId);
+		handleInputFieldByJS("search_PR_Number_XPATH", PRNumber);
+		Thread.sleep(1000);
+		handleClickByJS("filterReport_XPATH");
+		Thread.sleep(10000);
+		handleClickByJS("open_Ticket_ID_XPATH");
+		handleIframe("iframe_ID");
+		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
+		Thread.sleep(2000);
+		handleClickByJS("click_On_Ticket_Status_XPATH");
+		wait.until(ExpectedConditions.elementToBeClickable(
+				By.xpath("//input[@type='radio']/following-sibling::span[normalize-space()='Restored']"))).click();
+		click("status_Reason_XPATH");
+		clickUsingDynamicLocator("chhose_select_Fault_Area_XPATH", "Required Permanent Solution");
+		
+		click("select_Fault_Area_XPATH");
+		clickUsingDynamicLocator("chhose_select_Fault_Area_XPATH", selectFaultArea);
+		click("Select_Fault_Area_Detail_XPATH");
+		clickUsingDynamicLocator("chhose_select_Fault_Area_XPATH", faultAreaDetails);
+		click("select_Resolution_Method_XPATH");
+		clickUsingDynamicLocator("chhose_select_Fault_Area_XPATH", resolutionMethod);
+		handleClickByJS("rca_Category_XPATH");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='" + rcaCategory + "']")))
+				.click();
+		click("rca_Sub_Category_XPATH");
+		wait.until(
+				ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='" + rcaSubCategory + "']")))
+				.click();
+		Thread.sleep(1000);
+		handleInputFieldByJS("rca_Reason_XPATH", rcaReason);
+		Thread.sleep(1000);
+
+		handleInputFieldByJS("remarks_On_Resolved_Ticket_XPATH", "remarks");
+		performScrolling("update_Resolved_Ticket_CSS");
+		click("update_Resolved_Ticket_CSS");
+		String actualText = getText("verify_Resolved_Ticket_Updated_CSS");
+		Assert.assertTrue(actualText.contains("Trouble ticket updated successfully"));
+		Thread.sleep(1000);
+		switchToDefaultContentFromIframe();
+		handleClickByJS("closeFrame_XPATH");
+
+	}
+
+	public boolean monitorTicketUpdate() {
+		int maxAttempts = 60; // 30 minutes (60 * 30 seconds)
+		int attempt = 0;
+
+		while (attempt < maxAttempts) {
+			attempt++;
+			System.out.println("Attempt " + attempt + ": Checking ticket status...");
+
+			// Get the response from your ticket system/API
+			String response = getText("verify_Resolved_Ticket_Updated_CSS");
+			;
+
+			if (response.contains("Trouble ticket updated successfully")) {
+				System.out.println("✅ Ticket updated successfully!");
+				return true;
+
+			} else if (response.contains("Please wait for sometime to update the ticket")) {
+				System.out.println("⏳ Please wait for sometime to update the ticket...");
+
+			} else {
+				System.out.println("⚠️ Unexpected response: " + response);
+			}
+
+			// Wait for 30 seconds before next check
+			if (attempt < maxAttempts) {
+				System.out.println("Waiting 30 seconds before next check...");
+				try {
+					TimeUnit.SECONDS.sleep(30);
+				} catch (InterruptedException e) {
+					System.out.println("Thread interrupted: " + e.getMessage());
+					Thread.currentThread().interrupt();
+					return false;
+				}
+			}
+		}
+
+		System.out.println("❌ Maximum attempts reached. Ticket update may have failed.");
+		return false;
+	}
+	
+	public void verifyResolvedTheRTTSticket(String siteId, String PRNumber,String statusReason) throws InterruptedException {
+		handleInputFieldByJS("siteIDInputField_XPATH", siteId);
+		handleInputFieldByJS("search_PR_Number_XPATH", PRNumber);
+		Thread.sleep(1000);
+		handleClickByJS("filterReport_XPATH");
+		Thread.sleep(10000);
+		handleClickByJS("open_Ticket_ID_XPATH");
+		handleIframe("iframe_ID");
+		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
+		Thread.sleep(2000);
+		click("status_Reason_XPATH");
+		clickUsingDynamicLocator("chhose_select_Fault_Area_XPATH", statusReason);
+		handleClickByJS("click_On_Ticket_Status_XPATH");
+		wait.until(ExpectedConditions.elementToBeClickable(
+				By.xpath("//input[@type='radio']/following-sibling::span[normalize-space()='Resolved']"))).click();
+		
+		enterTextIntoInputBox("DG_Meter_Reading_XPATH", "value");
+		enterTextIntoInputBox("grid_Meter_Reading_XPATH", "value");
+		click("action_Taken_XPATH");
+		click("choose_action_Taken_XPATH");
+		enterTextIntoInputBox("fuel_Level_XPATH", "value");
+		handleInputFieldByJS("remarks_On_Resolved_Ticket_XPATH", "remarks");
+		performScrolling("update_Resolved_Ticket_CSS");
+		click("update_Resolved_Ticket_CSS");
+		String actualText = getText("verify_Resolved_Ticket_Updated_CSS");
+		Assert.assertTrue(actualText.contains("Trouble ticket resolved successfully"));
+		Thread.sleep(1000);
+		switchToDefaultContentFromIframe();
+		handleClickByJS("closeFrame_XPATH");
+
+	}
+	
+	public void verifyClosedTicket(String siteId, String PRNumber) throws InterruptedException {
+
+		handleInputFieldByJS("siteIDInputField_XPATH", siteId);
+		handleInputFieldByJS("search_PR_Number_XPATH", PRNumber);
+		Thread.sleep(1000);
+		handleClickByJS("filterReport_XPATH");
+		Thread.sleep(10000);
+		handleClickByJS("open_Ticket_ID_XPATH");
+		handleIframe("iframe_ID");
+		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
+
+		String ticketStatus = getText("ticket_Status_XPATH");
+		Assert.assertEquals(ticketStatus,"Closed");
+			
+
+			Allure.step("/* No action can be done on ticket once ticket is closed */");
+			handleInputFieldByJS("enterValue_HubSiteId_XPATH", "txtHubSite");
+			click("click_On_Update_Ticket_XPATH");
+			String ErrorText = getText("ErrorMessageOnTicketForm_XPATH");
+			Assert.assertTrue(ErrorText.contains("Remarks cannot be blank"));
+		}
+	}
+

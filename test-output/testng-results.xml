@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="92" total="130" passed="33" failed="5" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-02-03T16:54:59 IST" name="Tawal Test Automation Suite" finished-at="2026-02-03T17:11:31 IST" duration-ms="991433">
+    <groups>
+    </groups>
+    <test started-at="2026-02-03T16:54:59 IST" name="Run Test script for Add RTTS Ticket from Postman" finished-at="2026-02-03T16:55:03 IST" duration-ms="3485">
+      <class name="testCases.clients.Tawal.TheTroubleTicketAPI">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketAPI@86733]" started-at="2026-02-03T16:54:59 IST" name="setUp" finished-at="2026-02-03T16:54:59 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="baseURIForAPI()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketAPI@86733]" started-at="2026-02-03T16:54:59 IST" name="baseURIForAPI" finished-at="2026-02-03T16:55:00 IST" duration-ms="555" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseURIForAPI -->
+        <test-method signature="getTokenAPI()[pri:1, instance:testCases.clients.Tawal.TheTroubleTicketAPI@86733]" started-at="2026-02-03T16:55:00 IST" name="getTokenAPI" finished-at="2026-02-03T16:55:02 IST" duration-ms="1911" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getTokenAPI -->
+        <test-method is-config="true" signature="baseURIForAPI()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketAPI@86733]" started-at="2026-02-03T16:55:03 IST" name="baseURIForAPI" finished-at="2026-02-03T16:55:03 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseURIForAPI -->
+        <test-method signature="ticketCreationAPI(java.lang.String)[pri:2, instance:testCases.clients.Tawal.TheTroubleTicketAPI@86733]" started-at="2026-02-03T16:55:03 IST" name="ticketCreationAPI" data-provider="dataproTawal" finished-at="2026-02-03T16:55:03 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketAPI.getTokenAPI" duration-ms="56" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ZRY336]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ticketCreationAPI -->
+      </class> <!-- testCases.clients.Tawal.TheTroubleTicketAPI -->
+    </test> <!-- Run Test script for Add RTTS Ticket from Postman -->
+    <test started-at="2026-02-03T16:55:03 IST" name="Run Test script for Trouble Ticketing" finished-at="2026-02-03T17:09:10 IST" duration-ms="847334">
+      <class name="testCases.clients.Tawal.TheTroubleTicketing">
+        <test-method signature="aVerifySetup(java.lang.String)[pri:1, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T16:55:03 IST" name="aVerifySetup" data-provider="dataproTawal" finished-at="2026-02-03T16:55:05 IST" duration-ms="2201" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Tawal]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- aVerifySetup -->
+        <test-method signature="testLogin(java.lang.String,java.lang.String)[pri:1, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T16:55:05 IST" name="testLogin" data-provider="dataproTawal" finished-at="2026-02-03T16:55:08 IST" duration-ms="2797" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[superadmin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[m]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLogin -->
+        <test-method signature="verifySiteIdAutoFilled(java.lang.String)[pri:2, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T16:55:08 IST" name="verifySiteIdAutoFilled" data-provider="dataproTawal" finished-at="2026-02-03T16:55:28 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="20508" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ZWJ022]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifySiteIdAutoFilled -->
+        <test-method signature="addTroubleTicket(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:3, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T16:55:28 IST" name="addTroubleTicket" data-provider="dataproTawal" finished-at="2026-02-03T16:56:02 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="33581" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[1000135]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Incident]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Critical]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[3rd Escalation]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Acu Fault (Itc)]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[Outage]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[First]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTroubleTicket -->
+        <test-method signature="addTroubleTicket(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:3, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T16:56:02 IST" name="addTroubleTicket" data-provider="dataproTawal" finished-at="2026-02-03T16:56:44 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="42049" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[1000136]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Incident]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Critical]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[3rd Escalation]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Acu Fault (Itc)]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[Outage]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[Second]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTroubleTicket -->
+        <test-method signature="testLoginToAssignUser(java.lang.String,java.lang.String)[pri:4, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T16:56:44 IST" name="testLoginToAssignUser" data-provider="dataproTawal" finished-at="2026-02-03T16:56:51 IST" duration-ms="6870" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[superadmin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[m]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLoginToAssignUser -->
+        <test-method signature="updateETAndETR(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:5, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T16:56:51 IST" name="updateETAndETR" data-provider="dataproTawal" finished-at="2026-02-03T16:57:20 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="29290" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Acu Fault (Itc)]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1000135]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[10]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[30]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[3rd Escalation]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[reassigned]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[First]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateETAndETR -->
+        <test-method signature="testLoginToReassignUser(java.lang.String,java.lang.String)[pri:6, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T16:57:20 IST" name="testLoginToReassignUser" data-provider="dataproTawal" finished-at="2026-02-03T16:57:27 IST" duration-ms="6742" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[superadmin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[m]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLoginToReassignUser -->
+        <test-method signature="verifyTicketIsResolved(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:7, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T16:57:27 IST" name="verifyTicketIsResolved" data-provider="dataproTawal" finished-at="2026-02-03T16:58:59 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="92337" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Acu Fault (Itc)]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1000135]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Access-Module/Cable]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[GE/FE-Module/cable Faulty]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Test]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[Resolved]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[First]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[Access PtMP]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[AP has gone down(Sector is down)]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Cable damaged by Fire]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyTicketIsResolved -->
+        <test-method signature="verifyTicketIsResolved(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:7, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T16:58:59 IST" name="verifyTicketIsResolved" data-provider="dataproTawal" finished-at="2026-02-03T17:00:57 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="117445" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Acu Fault (Itc)]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1000136]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Access-Module/Cable]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[GE/FE-Module/cable Faulty]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Test]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[Resolved]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[Second]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[Access PtMP]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[AP has gone down(Sector is down)]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Cable damaged by Fire]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyTicketIsResolved -->
+        <test-method signature="testLoginToTTclosureOrCreater(java.lang.String,java.lang.String)[pri:8, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T17:00:57 IST" name="testLoginToTTclosureOrCreater" data-provider="dataproTawal" finished-at="2026-02-03T17:01:08 IST" duration-ms="11740" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[superadmin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[m]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLoginToTTclosureOrCreater -->
+        <test-method signature="verifyTicketIsClosed(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:9, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T17:01:08 IST" name="verifyTicketIsClosed" data-provider="dataproTawal" finished-at="2026-02-03T17:01:38 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="30108" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Acu Fault (Itc)]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1000135]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[AC Power Alarm]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[AC DB Fault]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Issue]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[First]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1590)
+at org.testng.Assert.assertTrue(Assert.java:57)
+at org.testng.Assert.assertTrue(Assert.java:67)
+at pages.iTower_Tawal.TroubleTicketingPage.handleClosedTicket(TroubleTicketingPage.java:1548)
+at testCases.clients.Tawal.TheTroubleTicketing.verifyTicketIsClosed(TheTroubleTicketing.java:131)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyTicketIsClosed -->
+        <test-method signature="verifyResolvedToAssignStatus(java.lang.String,java.lang.String,java.lang.String)[pri:10, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T17:01:39 IST" name="verifyResolvedToAssignStatus" data-provider="dataproTawal" finished-at="2026-02-03T17:02:29 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="50302" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Acu Fault (Itc)]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1000136]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Second]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResolvedToAssignStatus -->
+        <test-method signature="sortingFunctionalitiesOnDataGridUI()[pri:11, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T17:02:29 IST" name="sortingFunctionalitiesOnDataGridUI" finished-at="2026-02-03T17:03:05 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="36324" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- sortingFunctionalitiesOnDataGridUI -->
+        <test-method signature="paginationFunctionalitiesOnDataGridUI()[pri:12, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T17:03:05 IST" name="paginationFunctionalitiesOnDataGridUI" finished-at="2026-02-03T17:03:26 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="21227" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- paginationFunctionalitiesOnDataGridUI -->
+        <test-method signature="testFilterFunctionalitiesOnTroubleTicket()[pri:13, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T17:03:27 IST" name="testFilterFunctionalitiesOnTroubleTicket" finished-at="2026-02-03T17:03:55 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="28672" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testFilterFunctionalitiesOnTroubleTicket -->
+        <test-method signature="verifySaveFilter()[pri:14, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T17:03:55 IST" name="verifySaveFilter" finished-at="2026-02-03T17:04:13 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="17651" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifySaveFilter -->
+        <test-method signature="verifyRefreshButton()[pri:15, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T17:04:13 IST" name="verifyRefreshButton" finished-at="2026-02-03T17:04:26 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="13449" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyRefreshButton -->
+        <test-method signature="verifyFullScreenMode()[pri:16, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T17:04:26 IST" name="verifyFullScreenMode" finished-at="2026-02-03T17:04:34 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="7220" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyFullScreenMode -->
+        <test-method signature="RMSDataOnAlarmNameColumn(java.lang.String,java.lang.String)[pri:17, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T17:04:34 IST" name="RMSDataOnAlarmNameColumn" data-provider="dataproTawal" finished-at="2026-02-03T17:04:54 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="20219" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[TT00709198]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Manual]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.openqa.selenium.ElementClickInterceptedException">
+            <message>
+              <![CDATA[element click intercepted: Element <input type="text" id="txtFromDate" placeholder="From Date" class="form-control" autocomplete="off" style="width: 150px" tabindex="12"> is not clickable at point (1473, 180). Other element would receive the click: <div class="outer-layout pt-2 ng-scope">...</div>
+  (Session info: chrome=144.0.7559.110)
+Build info: version: '4.35.0', revision: '1c58e5028b'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [950262a57ba67bf7a5e00c04ce38c797, clickElement {id=f.D8D4084FBA93CBD71E74B1AB7453958B.d.B3943CDF6F5F79E0CE51AA4C08F0ECF0.e.18269}]
+Capabilities {acceptInsecureCerts: true, browserName: chrome, browserVersion: 144.0.7559.110, chrome: {chromedriverVersion: 144.0.7559.109 (6a8d5e49388..., userDataDir: C:\Users\SAURAB~1.ING\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49693}, goog:processID: 24036, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49693/devtoo..., se:cdpVersion: 144.0.7559.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (950262a57ba67bf7a5e00c04ce38c797)] -> id: txtFromDate]
+Session ID: 950262a57ba67bf7a5e00c04ce38c797]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <input type="text" id="txtFromDate" placeholder="From Date" class="form-control" autocomplete="off" style="width: 150px" tabindex="12"> is not clickable at point (1473, 180). Other element would receive the click: <div class="outer-layout pt-2 ng-scope">...</div>
+  (Session info: chrome=144.0.7559.110)
+Build info: version: '4.35.0', revision: '1c58e5028b'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [950262a57ba67bf7a5e00c04ce38c797, clickElement {id=f.D8D4084FBA93CBD71E74B1AB7453958B.d.B3943CDF6F5F79E0CE51AA4C08F0ECF0.e.18269}]
+Capabilities {acceptInsecureCerts: true, browserName: chrome, browserVersion: 144.0.7559.110, chrome: {chromedriverVersion: 144.0.7559.109 (6a8d5e49388..., userDataDir: C:\Users\SAURAB~1.ING\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49693}, goog:processID: 24036, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49693/devtoo..., se:cdpVersion: 144.0.7559.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (950262a57ba67bf7a5e00c04ce38c797)] -> id: txtFromDate]
+Session ID: 950262a57ba67bf7a5e00c04ce38c797
+at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
+at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:557)
+at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+at pages.AllClientsBasePages.BasePage.click(BasePage.java:232)
+at pages.AllClientsBasePages.BasePage.handleCalenderOnTroubleTicket(BasePage.java:671)
+at pages.iTower_Tawal.TroubleTicketingPage.RMSDataForTicketIdShouldReflectOnAlarmDescHover(TroubleTicketingPage.java:1990)
+at testCases.clients.Tawal.TheTroubleTicketing.RMSDataOnAlarmNameColumn(TheTroubleTicketing.java:236)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.ElementClickInterceptedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- RMSDataOnAlarmNameColumn -->
+        <test-method signature="verifyDataInSLAReport(java.lang.String,java.lang.String)[pri:18, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T17:04:54 IST" name="verifyDataInSLAReport" data-provider="dataproTawal" finished-at="2026-02-03T17:05:05 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="11164" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[KSA2520]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[ACES]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyDataInSLAReport -->
+        <test-method signature="verifyWildSearch()[pri:19, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T17:05:05 IST" name="verifyWildSearch" finished-at="2026-02-03T17:05:48 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="42675" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyWildSearch -->
+        <test-method signature="distanceValueBasedOnUserLatAndUserLong()[pri:20, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T17:05:48 IST" name="distanceValueBasedOnUserLatAndUserLong" finished-at="2026-02-03T17:06:31 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="43134" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- distanceValueBasedOnUserLatAndUserLong -->
+        <test-method signature="bulkUploadTroubleTicket(java.lang.String)[pri:21, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T17:06:31 IST" name="bulkUploadTroubleTicket" data-provider="dataproTawal" finished-at="2026-02-03T17:06:54 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="23585" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[1000191]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- bulkUploadTroubleTicket -->
+        <test-method signature="verifyReferredRTTStoAssign(java.lang.String)[pri:22, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T17:06:54 IST" name="verifyReferredRTTStoAssign" data-provider="dataproTawal" finished-at="2026-02-03T17:07:27 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="32880" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ZRY336]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyReferredRTTStoAssign -->
+        <test-method signature="verifyAssignRTTSToInProgress(java.lang.String)[pri:23, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T17:07:27 IST" name="verifyAssignRTTSToInProgress" data-provider="dataproTawal" finished-at="2026-02-03T17:08:22 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="55114" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ZRY336]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyAssignRTTSToInProgress -->
+        <test-method signature="verifyRestoreTheRTTSticket(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:24, instance:testCases.clients.Tawal.TheTroubleTicketing@3fbcfe81]" started-at="2026-02-03T17:08:22 IST" name="verifyRestoreTheRTTSticket" data-provider="dataproTawal" finished-at="2026-02-03T17:09:10 IST" duration-ms="47513" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ZRY336]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Access-Module/Cable]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[GE/FE-Module/cable Faulty]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Test]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Access PtMP]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[AP has gone down(Sector is down)]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[Cable damaged by Fire]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyRestoreTheRTTSticket -->
+      </class> <!-- testCases.clients.Tawal.TheTroubleTicketing -->
+    </test> <!-- Run Test script for Trouble Ticketing -->
+    <test started-at="2026-02-03T17:09:10 IST" name="Run Test script for Reject RTTS Ticket from Postman" finished-at="2026-02-03T17:09:13 IST" duration-ms="3078">
+      <class name="testCases.clients.Tawal.TheTroubleTicketAPI">
+        <test-method signature="getTokenAPI()[pri:1, instance:testCases.clients.Tawal.TheTroubleTicketAPI@1744a475]" started-at="2026-02-03T17:09:10 IST" name="getTokenAPI" finished-at="2026-02-03T17:09:10 IST" duration-ms="99" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getTokenAPI -->
+        <test-method is-config="true" signature="baseURIForAPI()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketAPI@1744a475]" started-at="2026-02-03T17:09:10 IST" name="baseURIForAPI" finished-at="2026-02-03T17:09:10 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseURIForAPI -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketAPI@1744a475]" started-at="2026-02-03T17:09:10 IST" name="setUp" finished-at="2026-02-03T17:09:10 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="TicketUpdateToReject()[pri:3, instance:testCases.clients.Tawal.TheTroubleTicketAPI@1744a475]" started-at="2026-02-03T17:09:10 IST" name="TicketUpdateToReject" finished-at="2026-02-03T17:09:13 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketAPI.getTokenAPI" duration-ms="2955" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TicketUpdateToReject -->
+        <test-method is-config="true" signature="baseURIForAPI()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketAPI@1744a475]" started-at="2026-02-03T17:09:10 IST" name="baseURIForAPI" finished-at="2026-02-03T17:09:10 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseURIForAPI -->
+      </class> <!-- testCases.clients.Tawal.TheTroubleTicketAPI -->
+    </test> <!-- Run Test script for Reject RTTS Ticket from Postman -->
+    <test started-at="2026-02-03T17:09:13 IST" name="Run Test Script For Restore The RTTS ticket After Reject From Postman " finished-at="2026-02-03T17:10:11 IST" duration-ms="58273">
+      <class name="testCases.clients.Tawal.TheTroubleTicketing">
+        <test-method signature="verifyRestoreTheRTTSticket(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:24, instance:testCases.clients.Tawal.TheTroubleTicketing@2eb917d0]" started-at="2026-02-03T17:09:13 IST" name="verifyRestoreTheRTTSticket" data-provider="dataproTawal" finished-at="2026-02-03T17:10:11 IST" duration-ms="58249" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ZRY336]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Access-Module/Cable]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[GE/FE-Module/cable Faulty]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Test]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Access PtMP]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[AP has gone down(Sector is down)]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[Cable damaged by Fire]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyRestoreTheRTTSticket -->
+      </class> <!-- testCases.clients.Tawal.TheTroubleTicketing -->
+    </test> <!-- Run Test Script For Restore The RTTS ticket After Reject From Postman  -->
+    <test started-at="2026-02-03T17:10:11 IST" name="Run Test Script For After RTTS Ticket Restored then RTTS will Approve From Postman " finished-at="2026-02-03T17:10:32 IST" duration-ms="20258">
+      <class name="testCases.clients.Tawal.TheTroubleTicketAPI">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketAPI@6a48a7f3]" started-at="2026-02-03T17:10:11 IST" name="setUp" finished-at="2026-02-03T17:10:11 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="baseURIForAPI()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketAPI@6a48a7f3]" started-at="2026-02-03T17:10:11 IST" name="baseURIForAPI" finished-at="2026-02-03T17:10:11 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseURIForAPI -->
+        <test-method signature="getTokenAPI()[pri:1, instance:testCases.clients.Tawal.TheTroubleTicketAPI@6a48a7f3]" started-at="2026-02-03T17:10:11 IST" name="getTokenAPI" finished-at="2026-02-03T17:10:12 IST" duration-ms="66" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getTokenAPI -->
+        <test-method is-config="true" signature="baseURIForAPI()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketAPI@6a48a7f3]" started-at="2026-02-03T17:10:12 IST" name="baseURIForAPI" finished-at="2026-02-03T17:10:12 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseURIForAPI -->
+        <test-method signature="TicketUpdateToApprove()[pri:4, instance:testCases.clients.Tawal.TheTroubleTicketAPI@6a48a7f3]" started-at="2026-02-03T17:10:12 IST" name="TicketUpdateToApprove" finished-at="2026-02-03T17:10:32 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketAPI.getTokenAPI" duration-ms="20155" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TicketUpdateToApprove -->
+      </class> <!-- testCases.clients.Tawal.TheTroubleTicketAPI -->
+    </test> <!-- Run Test Script For After RTTS Ticket Restored then RTTS will Approve From Postman  -->
+    <test started-at="2026-02-03T17:10:32 IST" name="Run Test Script For Resolved The RTTS ticket After Reject From Postman " finished-at="2026-02-03T17:11:04 IST" duration-ms="32537">
+      <class name="testCases.clients.Tawal.TheTroubleTicketing">
+        <test-method signature="verifyResolvedTheRTTSticket(java.lang.String,java.lang.String)[pri:25, instance:testCases.clients.Tawal.TheTroubleTicketing@3d278b4d]" started-at="2026-02-03T17:10:32 IST" name="verifyResolvedTheRTTSticket" data-provider="dataproTawal" finished-at="2026-02-03T17:11:04 IST" duration-ms="32332" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ZRY336]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Final]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1590)
+at org.testng.Assert.assertTrue(Assert.java:57)
+at org.testng.Assert.assertTrue(Assert.java:67)
+at pages.iTower_Tawal.TroubleTicketingPage.verifyResolvedTheRTTSticket(TroubleTicketingPage.java:3196)
+at testCases.clients.Tawal.TheTroubleTicketing.verifyResolvedTheRTTSticket(TheTroubleTicketing.java:332)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResolvedTheRTTSticket -->
+      </class> <!-- testCases.clients.Tawal.TheTroubleTicketing -->
+    </test> <!-- Run Test Script For Resolved The RTTS ticket After Reject From Postman  -->
+    <test started-at="2026-02-03T17:11:04 IST" name="Run Test Script For closure will be done from RTTS From Postman " finished-at="2026-02-03T17:11:05 IST" duration-ms="701">
+      <class name="testCases.clients.Tawal.TheTroubleTicketAPI">
+        <test-method is-config="true" signature="baseURIForAPI()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketAPI@6dfcffb5]" started-at="2026-02-03T17:11:04 IST" name="baseURIForAPI" finished-at="2026-02-03T17:11:04 IST" duration-ms="16" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseURIForAPI -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketAPI@6dfcffb5]" started-at="2026-02-03T17:11:04 IST" name="setUp" finished-at="2026-02-03T17:11:04 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="getTokenAPI()[pri:1, instance:testCases.clients.Tawal.TheTroubleTicketAPI@6dfcffb5]" started-at="2026-02-03T17:11:04 IST" name="getTokenAPI" finished-at="2026-02-03T17:11:04 IST" duration-ms="45" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getTokenAPI -->
+        <test-method is-config="true" signature="baseURIForAPI()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketAPI@6dfcffb5]" started-at="2026-02-03T17:11:04 IST" name="baseURIForAPI" finished-at="2026-02-03T17:11:04 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseURIForAPI -->
+        <test-method signature="TicketUpdateToClose()[pri:5, instance:testCases.clients.Tawal.TheTroubleTicketAPI@6dfcffb5]" started-at="2026-02-03T17:11:04 IST" name="TicketUpdateToClose" finished-at="2026-02-03T17:11:05 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketAPI.getTokenAPI" duration-ms="481" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [Success] but found [Failed]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [Success] but found [Failed]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1590)
+at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+at org.testng.Assert.assertEquals(Assert.java:132)
+at org.testng.Assert.assertEquals(Assert.java:656)
+at org.testng.Assert.assertEquals(Assert.java:666)
+at testCases.clients.Tawal.TheTroubleTicketAPI.TicketUpdateToClose(TheTroubleTicketAPI.java:159)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TicketUpdateToClose -->
+      </class> <!-- testCases.clients.Tawal.TheTroubleTicketAPI -->
+    </test> <!-- Run Test Script For closure will be done from RTTS From Postman  -->
+    <test started-at="2026-02-03T17:11:05 IST" name="Run Test Script For closed status should be updated at TMS end" finished-at="2026-02-03T17:11:31 IST" duration-ms="25604">
+      <class name="testCases.clients.Tawal.TheTroubleTicketing">
+        <test-method is-config="true" signature="checkFolderAndCreate()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketing@14d8444b]" started-at="2026-02-03T16:54:59 IST" name="checkFolderAndCreate" finished-at="2026-02-03T16:54:59 IST" duration-ms="28" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkFolderAndCreate -->
+        <test-method is-config="true" signature="cleanAllureResults()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketing@14d8444b]" started-at="2026-02-03T16:54:59 IST" name="cleanAllureResults" finished-at="2026-02-03T16:54:59 IST" duration-ms="11" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanAllureResults -->
+        <test-method is-config="true" signature="cleanDownloadExcelFile()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketing@14d8444b]" started-at="2026-02-03T16:54:59 IST" name="cleanDownloadExcelFile" finished-at="2026-02-03T16:54:59 IST" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanDownloadExcelFile -->
+        <test-method is-config="true" signature="cleanReports()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketing@14d8444b]" started-at="2026-02-03T16:54:59 IST" name="cleanReports" finished-at="2026-02-03T16:54:59 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanReports -->
+        <test-method signature="verifyClosedTheRTTSticket(java.lang.String)[pri:26, instance:testCases.clients.Tawal.TheTroubleTicketing@14d8444b]" started-at="2026-02-03T17:11:05 IST" name="verifyClosedTheRTTSticket" data-provider="dataproTawal" finished-at="2026-02-03T17:11:30 IST" duration-ms="25436" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ZRY336]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [Closed] but found [Restored]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [Closed] but found [Restored]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1590)
+at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+at org.testng.Assert.assertEquals(Assert.java:132)
+at org.testng.Assert.assertEquals(Assert.java:656)
+at org.testng.Assert.assertEquals(Assert.java:666)
+at pages.iTower_Tawal.TroubleTicketingPage.verifyClosedTicket(TroubleTicketingPage.java:3215)
+at testCases.clients.Tawal.TheTroubleTicketing.verifyClosedTheRTTSticket(TheTroubleTicketing.java:341)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyClosedTheRTTSticket -->
+        <test-method is-config="true" signature="backupAllFiles()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketing@14d8444b]" started-at="2026-02-03T17:11:31 IST" name="backupAllFiles" finished-at="2026-02-03T17:11:31 IST" duration-ms="81" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- backupAllFiles -->
+        <test-method is-config="true" signature="generateStaticAllureReport()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketing@14d8444b]" started-at="2026-02-03T17:11:31 IST" name="generateStaticAllureReport" finished-at="2026-02-03T17:11:34 IST" duration-ms="3705" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- generateStaticAllureReport -->
+      </class> <!-- testCases.clients.Tawal.TheTroubleTicketing -->
+    </test> <!-- Run Test Script For closed status should be updated at TMS end -->
+  </suite> <!-- Tawal Test Automation Suite -->
+</testng-results>
