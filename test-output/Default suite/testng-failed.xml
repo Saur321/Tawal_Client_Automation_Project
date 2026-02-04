@@ -8,10 +8,11 @@
           <include name="cleanDownloadExcelFile"/>
           <include name="cleanReports"/>
           <include name="checkFolderAndCreate"/>
+          <include name="aVerifySetup"/>
           <include name="backupAllFiles"/>
           <include name="cleanAllureResults"/>
-          <include name="testLogin" invocation-numbers="0"/>
-          <include name="verifyClosedTheRTTSticket"/>
+          <include name="RMSDataOnAlarmNameColumn" invocation-numbers="0"/>
+          <include name="testLogin"/>
           <include name="generateStaticAllureReport"/>
         </methods>
       </class> <!-- testCases.clients.Tawal.TheTroubleTicketing -->

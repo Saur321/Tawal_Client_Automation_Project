@@ -1514,7 +1514,7 @@ public class TroubleTicketingPage extends BasePage {
 		clickEscape();
 		Thread.sleep(2000);
 		handleClickByJS("filterReport_XPATH");
-		Thread.sleep(5000);
+		Thread.sleep(9000);
 		click("open_Ticket_ID_XPATH");
 		handleIframe("iframe_ID");
 		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
@@ -1649,7 +1649,7 @@ public class TroubleTicketingPage extends BasePage {
 		}
 		handleInputFieldByJS("siteIDInputField_XPATH", siteId);
 		handleClickByJS("filterReport_XPATH");
-		Thread.sleep(5000);
+		Thread.sleep(7000);
 		handleClickByJS("open_Ticket_ID_XPATH");
 		handleIframe("iframe_ID");
 		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
@@ -1707,11 +1707,11 @@ public class TroubleTicketingPage extends BasePage {
 		clickUsingDynamicLocator("chhose_select_Fault_Area_XPATH", faultAreaDetails);
 		click("select_Resolution_Method_XPATH");
 		clickUsingDynamicLocator("chhose_select_Fault_Area_XPATH", resolutionMethod);
-		performScrolling("spare_Part_XPATH");
 		click("action_Taken_XPATH");
 		click("choose_action_Taken_XPATH");
 		enterTextIntoInputBox("fuel_Level_XPATH", "value");
 		enterTextIntoInputBox("grid_Meter_Reading_XPATH", "value");
+		performScrolling("spare_Part_XPATH");
 		/* Files should be added while updating the ticket */
 		Allure.step("/* Files should be added while updating the ticket- Jpg, png, excel, pdf, word */");
 		uploadThedocxFile("addTicket");
@@ -1986,7 +1986,9 @@ public class TroubleTicketingPage extends BasePage {
 				.xpath("//span[normalize-space()='" + ticketMode + "']/preceding-sibling::input[@type=\"checkbox\"]")))
 				.click();
 		handleInputFieldByJS("TicKetIDInputField_XPATH", ticketID);
-		//clickEscape();
+		clickEscape();
+	//	handleClickByJS("ShowFilterOnTroubleTicketingPage_XPATH");
+		Thread.sleep(1000);
 		handleCalenderOnTroubleTicket(5);
 		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
 		Thread.sleep(2000);
@@ -2162,7 +2164,7 @@ public class TroubleTicketingPage extends BasePage {
 		handleInputFieldByJS("siteIDInputField_XPATH", siteId);
 		Thread.sleep(1000);
 		handleClickByJS("filterReport_XPATH");
-		Thread.sleep(5000);
+		Thread.sleep(7000);
 		handleClickByJS("open_Ticket_ID_XPATH");
 		handleIframe("iframe_ID");
 		explicitWaitWithinvisibilityOfElementLocated("waitForInvisible_XPATH");
@@ -3184,11 +3186,12 @@ public class TroubleTicketingPage extends BasePage {
 		wait.until(ExpectedConditions.elementToBeClickable(
 				By.xpath("//input[@type='radio']/following-sibling::span[normalize-space()='Resolved']"))).click();
 		
-		enterTextIntoInputBox("DG_Meter_Reading_XPATH", "value");
+		
 		enterTextIntoInputBox("grid_Meter_Reading_XPATH", "value");
 		click("action_Taken_XPATH");
 		click("choose_action_Taken_XPATH");
 		enterTextIntoInputBox("fuel_Level_XPATH", "value");
+		enterTextIntoInputBox("DG_Meter_Reading_XPATH", "value");
 		handleInputFieldByJS("remarks_On_Resolved_Ticket_XPATH", "remarks");
 		performScrolling("update_Resolved_Ticket_CSS");
 		click("update_Resolved_Ticket_CSS");

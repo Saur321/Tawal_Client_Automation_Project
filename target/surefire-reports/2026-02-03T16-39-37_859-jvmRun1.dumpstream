@@ -1,9 +1,0 @@
-# Created at 2026-02-03T16:52:38.575
-Error communicating with the remote browser. It may have died.
-Build info: version: '4.35.0', revision: '1c58e5028b'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [6a148a0b207b4ab891a5268edccb1916, screenshot []]
-Capabilities {acceptInsecureCerts: true, browserName: chrome, browserVersion: 144.0.7559.110, chrome: {chromedriverVersion: 144.0.7559.109 (6a8d5e49388..., userDataDir: C:\Users\SAURAB~1.ING\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60986}, goog:processID: 32148, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60986/devtoo..., se:cdpVersion: 144.0.7559.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 6a148a0b207b4ab891a5268edccb1916
-
