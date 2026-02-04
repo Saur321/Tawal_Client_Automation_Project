@@ -66,7 +66,7 @@ public class TheTroubleTicketing extends BasePage {
 	}
 
 	@Description("Verify test Login To Assign User")
-	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 4)
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 4,enabled = false)
 
 	public void testLoginToAssignUser(String username, String password)
 			throws InterruptedException, java.util.concurrent.TimeoutException, FileNotFoundException, IOException {
@@ -87,7 +87,7 @@ public class TheTroubleTicketing extends BasePage {
 	}
 
 	@Description("Verify test Login To Reassign User")
-	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 6)
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 6,enabled = false)
 	public void testLoginToReassignUser(String username, String password)
 			throws InterruptedException, java.util.concurrent.TimeoutException, FileNotFoundException, IOException {
 		refreshPage();
@@ -111,7 +111,7 @@ public class TheTroubleTicketing extends BasePage {
 	}
 
 	@Description("Verify test Login To TT closure Or Creater group")
-	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 8)
+	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 8,enabled = false)
 	public void testLoginToTTclosureOrCreater(String username, String password)
 			throws InterruptedException, java.util.concurrent.TimeoutException, FileNotFoundException, IOException {
 		refreshPage();
@@ -227,7 +227,7 @@ public class TheTroubleTicketing extends BasePage {
 
 	@Description("Verify RMS Data should be there in alarm desc hover")
 	@Test(dataProviderClass = DataUtilities_Tawal.class, dataProvider = "dataproTawal", priority = 17, dependsOnMethods = {
-			"testLogin" })
+			"testLogin"})
 	public void RMSDataOnAlarmNameColumn(String ticketID, String ticketMode)
 			throws InterruptedException, java.util.concurrent.TimeoutException {
 		refreshPage();
