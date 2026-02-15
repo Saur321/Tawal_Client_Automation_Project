@@ -1,32 +1,8 @@
-INFO    2026-02-04 13:06:51,665 [main] BaseTest.class  - Test Execution Starts !!
-INFO    2026-02-04 13:06:51,670 [main] BaseTest.class  - Config properties file loaded
-INFO    2026-02-04 13:06:51,674 [main] BaseTest.class  - OR properties file loaded
-INFO    2026-02-04 13:06:53,706 [main] BaseTest.class  - Chrome browser launched
-INFO    2026-02-04 13:06:54,077 [main] BaseTest.class  - Navigate to : http://192.168.0.35:5055/default.aspx 
-INFO    2026-02-04 13:06:54,212 [main] BaseTest.class  - Typing in username_ID element and entered the value as superadmin
-INFO    2026-02-04 13:06:54,264 [main] BaseTest.class  - Typing in password_ID element and entered the value as m
-INFO    2026-02-04 13:06:57,924 [main] BaseTest.class  - Clicking on signInButton_XPATH
-INFO    2026-02-04 13:07:01,315 [main] BaseTest.class  - Clicking on tickingManagementModule_XPATH
-INFO    2026-02-04 13:07:02,463 [main] BaseTest.class  - Clicking on troubleTickting_XPATH
-INFO    2026-02-04 13:07:02,496 [main] BaseTest.class  - Element waitForInvisible_XPATH is invisible on webpage
-INFO    2026-02-04 13:07:07,709 [main] BaseTest.class  - Clicking on ShowFilterOnTroubleTicketingPage_XPATH
-INFO    2026-02-04 13:07:07,851 [main] BaseTest.class  - Clicking on ticketStatusID_XPATH
-INFO    2026-02-04 13:07:08,216 [main] BaseTest.class  - Clicking on click_On_All_XPATH
-INFO    2026-02-04 13:07:08,427 [main] BaseTest.class  - Clicking on ShowFilterOnTroubleTicketingPage_XPATH
-INFO    2026-02-04 13:07:08,593 [main] BaseTest.class  - Clicking on ticket_Mode_XPATH
-INFO    2026-02-04 13:07:11,104 [main] BaseTest.class  - Clicking on dateOnCalender_ID
-INFO    2026-02-04 13:07:11,790 [main] BaseTest.class  - Element backMonthOnCalender_XPATH is clickable on webpage
-INFO    2026-02-04 13:07:13,002 [main] BaseTest.class  - Element backMonthOnCalender_XPATH is clickable on webpage
-INFO    2026-02-04 13:07:14,102 [main] BaseTest.class  - Element backMonthOnCalender_XPATH is clickable on webpage
-INFO    2026-02-04 13:07:15,229 [main] BaseTest.class  - Element backMonthOnCalender_XPATH is clickable on webpage
-INFO    2026-02-04 13:07:16,370 [main] BaseTest.class  - Element backMonthOnCalender_XPATH is clickable on webpage
-INFO    2026-02-04 13:07:17,440 [main] BaseTest.class  - Clicking on selectHourOnCalender_XPATH
-INFO    2026-02-04 13:07:17,701 [main] BaseTest.class  - Element filterReport_XPATH is clickable on webpage
-INFO    2026-02-04 13:07:18,367 [main] BaseTest.class  - Element waitForInvisible_XPATH is invisible on webpage
-INFO    2026-02-04 13:07:20,437 [main] BaseTest.class  - Element waitForInvisible_XPATH is invisible on webpage
-INFO    2026-02-04 13:07:26,875 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.reporters.jq.Main@5ef591af: 90 ms
-INFO    2026-02-04 13:07:26,875 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.reporters.FailedReporter@1ecec098: 0 ms
-INFO    2026-02-04 13:07:26,913 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.reporters.XMLReporter@446a692f: 38 ms
-INFO    2026-02-04 13:07:26,931 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.reporters.EmailableReporter2@7378c4a4: 18 ms
-INFO    2026-02-04 13:07:26,967 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.reporters.JUnitReportReporter@59a3eaf7: 36 ms
-INFO    2026-02-04 13:07:26,968 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.internal.ExitCodeListener@718d6b7c: 0 ms
+INFO    2026-02-15 20:15:22,977 [main] BaseTest.class  - Test Execution Starts !!
+INFO    2026-02-15 20:15:22,983 [main] BaseTest.class  - Config properties file loaded
+INFO    2026-02-15 20:15:22,986 [main] BaseTest.class  - OR properties file loaded
+INFO    2026-02-15 20:15:26,380 [main] BaseTest.class  - Chrome browser launched
+INFO    2026-02-15 20:15:28,773 [main] BaseTest.class  - Navigate to : http://192.168.0.35:5055/default.aspx 
+INFO    2026-02-15 20:15:29,170 [main] BaseTest.class  - Typing in username_ID element and entered the value as superadmin
+INFO    2026-02-15 20:15:29,272 [main] BaseTest.class  - Typing in password_ID element and entered the value as m
+INFO    2026-02-15 20:15:34,958 [main] BaseTest.class  - Clicking on signInButton_XPATH

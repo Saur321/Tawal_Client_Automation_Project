@@ -1,0 +1,2 @@
+Activity Id,Site Id,Activity Type,Genset Type,Assign Group,Assignee Email Id,Assign Reviewer,Reviewer Email Id,Review Plan Date,Schedule Date,Action,No. of Activtiy Visit,Auto Access Activity,Access Dur Activity,No. Of Audit Visits,Auto Access Audit,Access Dur Audit,Generator Asset Id,Due Date,Rejection Reason
+"","1000101","COOLING SYSTEM PMR","","FIELD USER","anupam.yadav@infozech.com","SITE ACTIVITY REVIEWER","shaileshkumar.c@tawal.com.sa","10-Feb-2026","10-Feb-2026","ADD","","","","","","","","10-Feb-2026","Review plan date can not less than sysdate. ",

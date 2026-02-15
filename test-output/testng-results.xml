@@ -1,47 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="24" total="27" passed="3" failed="0" skipped="0">
+<testng-results ignored="16" total="18" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-02-04T13:06:50 IST" name="Default suite" finished-at="2026-02-04T13:07:23 IST" duration-ms="33084">
+  <suite started-at="2026-02-15T20:03:57 IST" name="Default suite" finished-at="2026-02-15T20:05:13 IST" duration-ms="76154">
     <groups>
     </groups>
-    <test started-at="2026-02-04T13:06:50 IST" name="Default test" finished-at="2026-02-04T13:07:23 IST" duration-ms="33084">
-      <class name="testCases.clients.Tawal.TheTroubleTicketing">
-        <test-method is-config="true" signature="checkFolderAndCreate()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketing@6b2e0f78]" started-at="2026-02-04T13:06:50 IST" name="checkFolderAndCreate" finished-at="2026-02-04T13:06:50 IST" duration-ms="25" status="PASS">
+    <test started-at="2026-02-15T20:03:57 IST" name="Default test" finished-at="2026-02-15T20:05:13 IST" duration-ms="76154">
+      <class name="testCases.clients.Tawal.TheSiteActivity">
+        <test-method is-config="true" signature="checkFolderAndCreate()[pri:0, instance:testCases.clients.Tawal.TheSiteActivity@21d1b321]" started-at="2026-02-15T20:03:57 IST" name="checkFolderAndCreate" finished-at="2026-02-15T20:03:57 IST" duration-ms="48" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkFolderAndCreate -->
-        <test-method is-config="true" signature="cleanAllureResults()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketing@6b2e0f78]" started-at="2026-02-04T13:06:50 IST" name="cleanAllureResults" finished-at="2026-02-04T13:06:50 IST" duration-ms="9" status="PASS">
+        <test-method is-config="true" signature="cleanAllureResults()[pri:0, instance:testCases.clients.Tawal.TheSiteActivity@21d1b321]" started-at="2026-02-15T20:03:57 IST" name="cleanAllureResults" finished-at="2026-02-15T20:03:57 IST" duration-ms="15" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- cleanAllureResults -->
-        <test-method is-config="true" signature="cleanDownloadExcelFile()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketing@6b2e0f78]" started-at="2026-02-04T13:06:50 IST" name="cleanDownloadExcelFile" finished-at="2026-02-04T13:06:50 IST" duration-ms="3" status="PASS">
+        <test-method is-config="true" signature="cleanDownloadExcelFile()[pri:0, instance:testCases.clients.Tawal.TheSiteActivity@21d1b321]" started-at="2026-02-15T20:03:57 IST" name="cleanDownloadExcelFile" finished-at="2026-02-15T20:03:57 IST" duration-ms="5" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- cleanDownloadExcelFile -->
-        <test-method is-config="true" signature="cleanReports()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketing@6b2e0f78]" started-at="2026-02-04T13:06:50 IST" name="cleanReports" finished-at="2026-02-04T13:06:50 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="cleanReports()[pri:0, instance:testCases.clients.Tawal.TheSiteActivity@21d1b321]" started-at="2026-02-15T20:03:57 IST" name="cleanReports" finished-at="2026-02-15T20:03:57 IST" duration-ms="4" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- cleanReports -->
-        <test-method signature="aVerifySetup(java.lang.String)[pri:1, instance:testCases.clients.Tawal.TheTroubleTicketing@6b2e0f78]" started-at="2026-02-04T13:06:51 IST" name="aVerifySetup" data-provider="dataproTawal" finished-at="2026-02-04T13:06:54 IST" duration-ms="2490" status="PASS">
+        <test-method signature="testLogin(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:testCases.clients.Tawal.TheSiteActivity@21d1b321]" started-at="2026-02-15T20:03:59 IST" name="testLogin" data-provider="dataproTawalPM" finished-at="2026-02-15T20:04:22 IST" duration-ms="22808" status="PASS">
           <params>
             <param index="0">
               <value>
                 <![CDATA[Tawal]]>
               </value>
             </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- aVerifySetup -->
-        <test-method signature="testLogin(java.lang.String,java.lang.String)[pri:1, instance:testCases.clients.Tawal.TheTroubleTicketing@6b2e0f78]" started-at="2026-02-04T13:06:54 IST" name="testLogin" data-provider="dataproTawal" finished-at="2026-02-04T13:06:57 IST" duration-ms="3811" status="PASS">
-          <params>
-            <param index="0">
+            <param index="1">
               <value>
                 <![CDATA[superadmin]]>
               </value>
             </param>
-            <param index="1">
+            <param index="2">
               <value>
                 <![CDATA[m]]>
               </value>
@@ -50,31 +44,26 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testLogin -->
-        <test-method signature="RMSDataOnAlarmNameColumn(java.lang.String,java.lang.String)[pri:17, instance:testCases.clients.Tawal.TheTroubleTicketing@6b2e0f78]" started-at="2026-02-04T13:06:57 IST" name="RMSDataOnAlarmNameColumn" data-provider="dataproTawal" finished-at="2026-02-04T13:07:23 IST" depends-on-methods="testCases.clients.Tawal.TheTroubleTicketing.aVerifySetup, testCases.clients.Tawal.TheTroubleTicketing.testLogin" duration-ms="25606" status="PASS">
+        <test-method signature="bulkUploadSchedulePMActivity(java.lang.String)[pri:13, instance:testCases.clients.Tawal.TheSiteActivity@21d1b321]" started-at="2026-02-15T20:04:22 IST" name="bulkUploadSchedulePMActivity" data-provider="dataproTawalPM" finished-at="2026-02-15T20:05:13 IST" depends-on-methods="testCases.clients.Tawal.TheSiteActivity.testLogin" duration-ms="51003" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[TT00709198]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[Manual]]>
+                <![CDATA[1000101]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- RMSDataOnAlarmNameColumn -->
-        <test-method is-config="true" signature="backupAllFiles()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketing@6b2e0f78]" started-at="2026-02-04T13:07:23 IST" name="backupAllFiles" finished-at="2026-02-04T13:07:23 IST" duration-ms="15" status="PASS">
+        </test-method> <!-- bulkUploadSchedulePMActivity -->
+        <test-method is-config="true" signature="backupAllFiles()[pri:0, instance:testCases.clients.Tawal.TheSiteActivity@21d1b321]" started-at="2026-02-15T20:05:14 IST" name="backupAllFiles" finished-at="2026-02-15T20:05:14 IST" duration-ms="12" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- backupAllFiles -->
-        <test-method is-config="true" signature="generateStaticAllureReport()[pri:0, instance:testCases.clients.Tawal.TheTroubleTicketing@6b2e0f78]" started-at="2026-02-04T13:07:23 IST" name="generateStaticAllureReport" finished-at="2026-02-04T13:07:26 IST" duration-ms="3088" status="PASS">
+        <test-method is-config="true" signature="generateStaticAllureReport()[pri:0, instance:testCases.clients.Tawal.TheSiteActivity@21d1b321]" started-at="2026-02-15T20:05:14 IST" name="generateStaticAllureReport" finished-at="2026-02-15T20:05:20 IST" duration-ms="6045" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- generateStaticAllureReport -->
-      </class> <!-- testCases.clients.Tawal.TheTroubleTicketing -->
+      </class> <!-- testCases.clients.Tawal.TheSiteActivity -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

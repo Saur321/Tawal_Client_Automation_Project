@@ -21,6 +21,20 @@ public class DataUtilities_Tawal extends testCases.BaseTest.BaseTest_Tawal {
 		}
 		return data;
 	}
-	
+	@DataProvider(name = "dataproTawalPM")
+	public Object[][] getDataForPM(Method m) {
+		String sheetName = m.getName();
+
+		int rowNum = excelForPM.getRowCount(sheetName);
+		int colNum = excelForPM.getColumnCount(sheetName);
+		Object[][] data = new Object[rowNum - 1][colNum];
+
+		for (int rows = 2; rows <= rowNum; rows++) {
+			for (int cols = 0; cols < colNum; cols++) {
+				data[rows - 2][cols] = excelForPM.getCellData(sheetName, cols, rows);
+			}
+		}
+		return data;
+	}
 	
 	}

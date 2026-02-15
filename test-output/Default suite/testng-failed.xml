@@ -3,19 +3,18 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testCases.clients.Tawal.TheTroubleTicketing">
+      <class name="testCases.clients.Tawal.TheSiteActivity">
         <methods>
+          <include name="testLogin"/>
           <include name="cleanDownloadExcelFile"/>
           <include name="cleanReports"/>
           <include name="checkFolderAndCreate"/>
-          <include name="aVerifySetup"/>
           <include name="backupAllFiles"/>
+          <include name="bulkUploadSchedulePMActivity" invocation-numbers="0"/>
           <include name="cleanAllureResults"/>
-          <include name="RMSDataOnAlarmNameColumn" invocation-numbers="0"/>
-          <include name="testLogin"/>
           <include name="generateStaticAllureReport"/>
         </methods>
-      </class> <!-- testCases.clients.Tawal.TheTroubleTicketing -->
+      </class> <!-- testCases.clients.Tawal.TheSiteActivity -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

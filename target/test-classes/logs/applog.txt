@@ -1,32 +1,21 @@
-INFO    2026-02-04 13:06:51,665 [main] BaseTest.class  - Test Execution Starts !!
-INFO    2026-02-04 13:06:51,670 [main] BaseTest.class  - Config properties file loaded
-INFO    2026-02-04 13:06:51,674 [main] BaseTest.class  - OR properties file loaded
-INFO    2026-02-04 13:06:53,706 [main] BaseTest.class  - Chrome browser launched
-INFO    2026-02-04 13:06:54,077 [main] BaseTest.class  - Navigate to : http://192.168.0.35:5055/default.aspx 
-INFO    2026-02-04 13:06:54,212 [main] BaseTest.class  - Typing in username_ID element and entered the value as superadmin
-INFO    2026-02-04 13:06:54,264 [main] BaseTest.class  - Typing in password_ID element and entered the value as m
-INFO    2026-02-04 13:06:57,924 [main] BaseTest.class  - Clicking on signInButton_XPATH
-INFO    2026-02-04 13:07:01,315 [main] BaseTest.class  - Clicking on tickingManagementModule_XPATH
-INFO    2026-02-04 13:07:02,463 [main] BaseTest.class  - Clicking on troubleTickting_XPATH
-INFO    2026-02-04 13:07:02,496 [main] BaseTest.class  - Element waitForInvisible_XPATH is invisible on webpage
-INFO    2026-02-04 13:07:07,709 [main] BaseTest.class  - Clicking on ShowFilterOnTroubleTicketingPage_XPATH
-INFO    2026-02-04 13:07:07,851 [main] BaseTest.class  - Clicking on ticketStatusID_XPATH
-INFO    2026-02-04 13:07:08,216 [main] BaseTest.class  - Clicking on click_On_All_XPATH
-INFO    2026-02-04 13:07:08,427 [main] BaseTest.class  - Clicking on ShowFilterOnTroubleTicketingPage_XPATH
-INFO    2026-02-04 13:07:08,593 [main] BaseTest.class  - Clicking on ticket_Mode_XPATH
-INFO    2026-02-04 13:07:11,104 [main] BaseTest.class  - Clicking on dateOnCalender_ID
-INFO    2026-02-04 13:07:11,790 [main] BaseTest.class  - Element backMonthOnCalender_XPATH is clickable on webpage
-INFO    2026-02-04 13:07:13,002 [main] BaseTest.class  - Element backMonthOnCalender_XPATH is clickable on webpage
-INFO    2026-02-04 13:07:14,102 [main] BaseTest.class  - Element backMonthOnCalender_XPATH is clickable on webpage
-INFO    2026-02-04 13:07:15,229 [main] BaseTest.class  - Element backMonthOnCalender_XPATH is clickable on webpage
-INFO    2026-02-04 13:07:16,370 [main] BaseTest.class  - Element backMonthOnCalender_XPATH is clickable on webpage
-INFO    2026-02-04 13:07:17,440 [main] BaseTest.class  - Clicking on selectHourOnCalender_XPATH
-INFO    2026-02-04 13:07:17,701 [main] BaseTest.class  - Element filterReport_XPATH is clickable on webpage
-INFO    2026-02-04 13:07:18,367 [main] BaseTest.class  - Element waitForInvisible_XPATH is invisible on webpage
-INFO    2026-02-04 13:07:20,437 [main] BaseTest.class  - Element waitForInvisible_XPATH is invisible on webpage
-INFO    2026-02-04 13:07:26,875 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.reporters.jq.Main@5ef591af: 90 ms
-INFO    2026-02-04 13:07:26,875 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.reporters.FailedReporter@1ecec098: 0 ms
-INFO    2026-02-04 13:07:26,913 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.reporters.XMLReporter@446a692f: 38 ms
-INFO    2026-02-04 13:07:26,931 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.reporters.EmailableReporter2@7378c4a4: 18 ms
-INFO    2026-02-04 13:07:26,967 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.reporters.JUnitReportReporter@59a3eaf7: 36 ms
-INFO    2026-02-04 13:07:26,968 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.internal.ExitCodeListener@718d6b7c: 0 ms
+INFO    2026-02-15 20:04:00,111 [main] BaseTest.class  - Test Execution Starts !!
+INFO    2026-02-15 20:04:00,120 [main] BaseTest.class  - Config properties file loaded
+INFO    2026-02-15 20:04:00,124 [main] BaseTest.class  - OR properties file loaded
+INFO    2026-02-15 20:04:03,203 [main] BaseTest.class  - Chrome browser launched
+INFO    2026-02-15 20:04:05,943 [main] BaseTest.class  - Navigate to : http://192.168.0.35:5055/default.aspx 
+INFO    2026-02-15 20:04:06,297 [main] BaseTest.class  - Typing in username_ID element and entered the value as superadmin
+INFO    2026-02-15 20:04:06,485 [main] BaseTest.class  - Typing in password_ID element and entered the value as m
+INFO    2026-02-15 20:04:22,626 [main] BaseTest.class  - Clicking on signInButton_XPATH
+INFO    2026-02-15 20:04:36,840 [main] BaseTest.class  - Element available as text : Activity Report
+INFO    2026-02-15 20:04:37,223 [main] BaseTest.class  - Clicking on activity_Report_Bulk_Upload_Button_ID
+INFO    2026-02-15 20:04:39,060 [main] BaseTest.class  - Frame iframe_Activity_Rpt_Bulk_Upload_ID is handled on webpage
+INFO    2026-02-15 20:04:39,177 [main] BaseTest.class  - File is uploaded from the location as C:\Users\saurabh.ingulkar\eclipse-workspace\Tawal_Client_Automation_Project\src\main\resources\iTower_Clients_Excel\excel_Tawal\PM Bulk Upload Add.csv
+INFO    2026-02-15 20:04:43,216 [main] BaseTest.class  - Clicking on activity_Report_Upload_ID
+INFO    2026-02-15 20:05:13,485 [main] BaseTest.class  - Element available as text : All record(s) uploaded successfully.
+INFO    2026-02-15 20:05:13,956 [main] BaseTest.class  - Clicking on closeFrame_XPATH
+INFO    2026-02-15 20:05:20,271 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.reporters.jq.Main@4219a4cc: 137 ms
+INFO    2026-02-15 20:05:20,272 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.reporters.FailedReporter@17fb5184: 1 ms
+INFO    2026-02-15 20:05:20,293 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.reporters.XMLReporter@438a2d3: 19 ms
+INFO    2026-02-15 20:05:20,303 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.reporters.EmailableReporter2@666b1244: 10 ms
+INFO    2026-02-15 20:05:20,317 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.reporters.JUnitReportReporter@7af56b26: 14 ms
+INFO    2026-02-15 20:05:20,317 [main] org.testng.internal.Utils  - [TestNG] Time taken by org.testng.internal.ExitCodeListener@c86c486: 0 ms
