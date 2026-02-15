@@ -1884,7 +1884,6 @@ public class BasePage {
 			String fileLocation = userDir + getUploadFileLocation() + dataUpload + ".xlsx";
 			uploadExcel(locatorKey, fileLocation);
 			Allure.step(dataUpload + " xlsx file uploaded.");
-			Thread.sleep(3000);
 		}
 
 		// upload All PNG Files From Folder
